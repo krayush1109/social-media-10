@@ -1,0 +1,32 @@
+<%- include('./partials/header') %>
+  <%- include('./partials/navbar') %>
+
+    <section class="w-full h-[--container-h1] p-0 flex overflow-hidden">
+      <div id="lhs-register" class="w-[60%] h-full flex justify-center">
+        <img src="./images/social-media-registration.png" class="object-cover min-w-[60%] h-full mt-16" alt="">
+      </div>
+      <div id="rhs-register" class="w-[40%] h-full ">
+
+        <div class="min-h-[70%] flex flex-col gap-6  flex flex-col justify-center">
+          <div class="text-center mb-12">
+            <h1 class="text-[3.5rem] text-[--primary] font-semibold  w-full px-[5rem] ">
+              Create Account </h1>
+            <p class="text-zinc-500 text-lg font-semibold">New Registration</p>
+          </div>
+          <form action="/register" method="post" class="flex flex-col justify-start gap-6 px-[5rem]">
+            <input class="px-6 py-2 rounded-full  " type="email" name="emai" id="" placeholder="Email">
+            <input class="px-6 py-2 rounded-full  " type="text" name="username" id=""
+              placeholder="Username">
+            <div class="flex flex-col gap-3 ">
+              <input class="px-6 py-2 rounded-full  " type="password" name="password" id=""
+                placeholder="Password">
+            </div>
+            <button class="px-8 py-2 bg-[--secondary] rounded-full  text-white text-xl font-semibold"
+              type="submit">Register</button>
+          </form>
+
+
+        </div>
+    </section>
+
+    <%- include('./partials/footer') %>

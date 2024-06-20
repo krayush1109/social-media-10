@@ -1,8 +1,34 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body > *{
+  padding: 0 17rem;
+} 
+
+.bg-gradient{
+  @apply bg-gradient-to-br from-[#a165f6] from-0% to-[#e860d8] to-100%
 }
 
-a {
-  color: #00B7FF;
+:root{
+  --primary-grad: linear-gradient(131deg, rgba(161, 101, 246, 1) 0%, rgba(232, 96, 216, 1) 100%);
+  --nav-txt:#0F172A;
+  --nav-txt-h: #475569;
+  
+  --primary: #8435F3;
+  --primary-h: #a165f6;
+
+  --secondary: #E233CD;
+  --secondary-h: #e860d8;
+
+  --tertiary: #3545F3;
+  --tertiary-h: #6571F6;
+  
+  --body-bg: #e6ecf1;
+
+  --clr-1: #e060db;
+  --clr-2: #fc5ecf;
+
+  /* ------------------ */
+  --container-h1: calc(100vh - 5rem);
 }
