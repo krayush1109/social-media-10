@@ -22,4 +22,8 @@ router.get('/register', function (req, res, next) {
   res.render('register', { title: 'Register | Social Media' });
 });
 
+router.get('/forgot', function (req, res, next) {
+  res.render("forgot", {title: 'Forgot Password'})
+})
+
 module.exports = router;

@@ -10,10 +10,6 @@ passport.use(new LocalStrategy(UserCollection.authenticate()))
 // ------------ passport routes ------------ 
 
 /* GET users listing. */
-router.get('/', (req, res, next) => {
-  // res.send('respond with a resource ');
-  res.redirect('/')
-})
 
 router.post('/register', async (req, res, next) => {
   try {
