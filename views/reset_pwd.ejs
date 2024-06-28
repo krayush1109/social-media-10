@@ -1,0 +1,31 @@
+<%- include('./partials/header') %>
+    <%- include('./partials/navbar') %>
+
+        <section class="p-0 w-full h-[--container-h1] flex overflow-hidden ">
+
+            <div id="lhs-register" class="w-[60%] h-full flex justify-center items-start  ">
+                <img src="/images/reset-2.png" class=" object-cover  min-w-[40%] min-h-[10%] mt-16" alt="Img NA">
+            </div>
+            <div id="rhs-register" class="w-[40%] h-full ">
+
+                <div class="min-h-[70%] flex flex-col gap-6  flex flex-col justify-center">
+                    <div class="text-center mb-12">
+                        <h1 class="text-[3.5rem] text-[#e5b400] font-semibold  w-full px-[5rem] ">
+                            Reset Password </h1>
+                        <p class="text-zinc-500 text-lg font-semibold mt-8">Enter a new password to reset</p>
+                        <p class="text-zinc-500 text-lg font-semibold underline cursor-default "><%= user.email %></p>
+                    </div>
+                    <form action="/user/reset_pwd/<%= user._id %>" method="post" class="flex flex-col justify-start gap-6 px-[5rem]">
+                        <input class="px-6 py-2 rounded-full font-semibold " type="password" name="password" id="" placeholder="New password">                        
+                        <input class="px-6 py-2 rounded-full font-semibold " type="password" name="cpassword" id="" placeholder="Confirm password">                        
+                        
+                        <button class="px-8 py-2 bg-[#e5b400] hover:bg-[#cca001] rounded-full  text-white text-xl font-semibold"
+                            type="submit">Reset Password</button>
+                    </form>
+
+
+                </div>
+
+        </section>
+
+        <%- include('./partials/footer') %>

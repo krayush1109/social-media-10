@@ -15,6 +15,11 @@ const user_schema = mongoose.Schema({
     avatar: {
         type: String,
         default: "https://w7.pngwing.com/pngs/1000/665/png-transparent-computer-icons-profile-s-free-angle-sphere-profile-cliparts-free-thumbnail.png",
+    },
+    otp: {
+        type: Number,
+        required: true,
+        default: 0
     }
 }, {timestamps: true}
 );
