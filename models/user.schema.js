@@ -12,9 +12,20 @@ const user_schema = mongoose.Schema({
         required: true
     },
     password: String,   
-    avatar: {
+    bio: {
         type: String,
-        default: "https://w7.pngwing.com/pngs/1000/665/png-transparent-computer-icons-profile-s-free-angle-sphere-profile-cliparts-free-thumbnail.png",
+        default: ""
+    },
+    avatar: {
+        fileId: String,
+        url: {
+            type: String,
+            default: "https://ik.imagekit.io/krayush/default-image.jpg?updatedAt=1719568500884",                   
+        },
+        thumbnailUrl: {            
+            type: String,                
+            default: "https://ik.imagekit.io/krayush/default-image.jpg?updatedAt=1719568500884",            
+        },
     },
     otp: {
         type: Number,

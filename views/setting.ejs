@@ -1,0 +1,64 @@
+<%- include('./partials/header') %>
+  <%- include('./partials/navbar') %>
+
+    <section id="setting-pg"
+      class="h-[--container-h1] py-10 bg-[--setting-bg] px-10 mx-[17rem] border border-gray-200 rounded-lg shadow light:bg-gray-800">
+
+      <div id="setting-pg-in" class="w-full h-full flex">
+
+        <div id="sidebar" class="min-w-52 mr-10 flex flex-col justify-between text-lg font-semibold ">
+          <div class="flex flex-col">
+            <p class=" bg-gray-200 hover:bg-gray-300 cursor-pointer  px-4 py-3   "><i class="ri-user-fill"></i> Edit
+              Profile</p>
+            <p class=" hover:bg-gray-300 cursor-pointer  px-4 py-3   "><i class="ri-question-fill"></i> Help</p>
+            <hr class="my-8">
+            <a href="/user/delete/<%= user._id %>" class=" bg-red-600 hover:bg-red-500 cursor-pointer text-white px-4 py-3 "><i
+                class="ri-delete-bin-2-line"></i> Delete Account</a>
+          </div>
+          <div>
+            <p class="hover:bg-gray-300 cursor-pointer pl-2 py-3"><i class="ri-group-line"></i> Connect with Friends</p>
+          </div>
+        </div>
+
+        <div id="rhs-setting" class="h-full w-full">
+          <!-- setting title -->          
+          <div id="header-setting" class="w-full h-fit  ">
+            <div id="header-setting-in" class="flex justify-between items-center w-full h-fit">
+              
+              <div class="h-fit ">
+                <h1 class="text-4xl font-bold">Settings</h1>
+                <p class="text-lg my-3">Control your profile setup</p>
+              </div>
+              <a href="/user/logout"
+                class=" bg-red-500 hover:bg-red-600 text-white w-fit h-fit font-bold rounded-full  px-6 py-1 ">Log
+                out</a>
+            </div>
+            <hr>
+          </div>
+          <!-- setting pg: PROFILE IMAGE -->
+          <div id="setting-content" class="w-full h-fit flex items-center my-3">
+            
+            <form action="/user/avatar/<%= user._id%>" method="post" enctype="multipart/form-data" id="avatar-form" class=" h-fit ">
+              <img src="<%= user.avatar.url %>" id="avatar-img" class="w-36 h-36 rounded-full object-cover" alt="N/A">
+              <input type="file" name="avatar" id="avatar-input" class="hidden">
+            </form>
+            <div class="h-24 w-[2px] bg-gray-200 m-6"></div>
+            
+            <div class="font-semibold text-lg flex flex-col gap-4 ">
+              <h1 class=" text-gray-500 cursor-default">Email: <%= user.email %></h1>
+              <div class="flex gap-2" >
+               <p>Bio: </p><textarea type="text" rows="" cols="28" class="px-3 py-1" placeholder="Enter your bio here..."></textarea>
+              </div>
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <%- include('./partials/footer') %>

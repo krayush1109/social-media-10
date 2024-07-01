@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const path = require('path')
+
 // middleware
 const { isLoggedIn } = require('../middleware/auth');
 
@@ -10,6 +12,7 @@ const LocalStrategy = require('passport-local')
 const UserCollection = require('../models/user.schema');
 const { sendMail } = require('../utils/sendMail');
 const User_Collection = require('../models/user.schema');
+const imagekit = require('../utils/imagekit');
 
 passport.use(new LocalStrategy(UserCollection.authenticate()))
 // ------------ passport routes ------------ 
@@ -36,7 +39,7 @@ router.post('/login',
   }),
   (req, res, next) => { });
 
-router.get('/profile', isLoggedIn, (req, res, next) => {  
+router.get('/profile', isLoggedIn, (req, res, next) => {
   res.render("profile", { title: "Profile | Socialmedia", user: req.user })
 })
 
@@ -119,6 +122,52 @@ router.post('/reset_pwd/:id', async (req, res, next) => {
   }
 })
 
+router.get('/setting', isLoggedIn, (req, res, next) => {
+  res.render("setting", { title: "Setting", user: req.user });
+})
 
+router.post('/avatar/:id', isLoggedIn, async (req, res, next) => {
+  const user = await UserCollection.findById(req.params.id);
+
+  // Upload the new avatar
+  try {
+    const { fileId, url, thumbnailUrl } = await imagekit.upload({
+      file: req.files.avatar.data,
+      // fileName: Date.now() + path.extname(req.files.avatar.name),
+      fileName: user.username,
+      folder: "/avatar",
+    })
+
+    // console.log("req.user : ", req.user);
+    // console.log("req.user.avatar : ", req.user.avatar);
+    // console.log("req.user.avatar.fileId: ", fileId);
+
+    // Delete the old avatar if it exists
+    if (req.user.avatar && req.user.avatar.fileId) {
+      await imagekit.deleteFile(req.user.avatar.fileId);
+    }
+
+    // Update the user's new avatar info
+    user.avatar = { fileId, url, thumbnailUrl };
+    await user.save();
+
+    // Redirect to the settings page
+    res.redirect("/user/setting");
+  } catch (err) {
+    console.error(err.message);
+    res.send(err);
+  }
+
+})
+
+// 🗑️ DELETE USER 🗑️
+router.get('/delete/:id', isLoggedIn, async (req, res, next) => {
+  const user = await UserCollection.findByIdAndDelete(req.params.id);
+  console.log(user);
+  await imagekit.deleteFile(user.avatar.fileId);
+  // await user.save();
+
+  res.redirect('/register');
+})
 
 module.exports = router;

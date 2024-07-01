@@ -1,20 +1,39 @@
-<nav class="flex justify-between h-[5rem] text-lg text-center font-semibold py-5 border-b-2 border-gray-300 " >    
-    <div class="flex gap-8 ">
+<nav class="flex justify-between h-[5rem] text-lg text-center font-semibold  border-b-2 border-gray-300 ">
+    <div class="flex gap-8 my-auto">
         <% if(user) { %>
-            <a href="/user/profile" class="hover:border-b-2 border-black duration-100 px-6 py-1 text-[--nav-txt] hover:text-[--nav-txt-h] " >Home</a>
-        <% }else { %>
-            <a href="/" class="hover:border-b-2 border-black duration-100 px-6 py-1 text-[--nav-txt] hover:text-[--nav-txt-h] " >Home</a>
-        <% } %>
-        <a href="/about"   class="hover:border-b-2 border-black duration-100 px-6 py-1 text-[--nav-txt] hover:text-[--nav-txt-h] " >About</a>
-        <a href="/contact" class="hover:border-b-2 border-black duration-100 px-6 py-1 text-[--nav-txt] hover:text-[--nav-txt-h] " >Contact</a>        
+            <a href="/user/profile"
+                class="hover:border-b-2 border-black duration-100 px-6 py-1 text-[--nav-txt] hover:text-[--nav-txt-h] ">Home</a>
+            <% }else { %>
+                <a href="/"
+                    class="hover:border-b-2 border-black duration-100 px-6 py-1 text-[--nav-txt] hover:text-[--nav-txt-h] ">Home</a>
+                <% } %>
+                    <a href="/about"
+                        class="hover:border-b-2 border-black duration-100 px-6 py-1 text-[--nav-txt] hover:text-[--nav-txt-h] ">About</a>
+                    <a href="/contact"
+                        class="hover:border-b-2 border-black duration-100 px-6 py-1 text-[--nav-txt] hover:text-[--nav-txt-h] ">Contact</a>
     </div>
-    <div class="flex gap-8" >
+    <div class="flex gap-8 h-full">
 
         <% if(user){ %>
-            <a href="/user/logout" class=" bg-red-500 hover:bg-red-600 text-white rounded-full  px-6 py-1 " >Logout</a>
-        <% }else{ %>
-            <a href="/login" class="    hover:border-b-2 border-black duration-100 text-[--nav-txt] hover:text-[--nav-txt-h] uppercase px-6 py-1 " >Login</a>
-            <a href="/register" class=" bg-slate-300 hover:bg-slate-400 rounded-full uppercase px-6 py-1 " >Register</a>
-        <% } %>
+            <div class="relative dropdown h-full ">
+                <div
+                    class="dropbtn h-[3.2rem] w-[3.2rem] my-auto flex items-center gap-1 cursor-pointer relative top-[50%] -translate-y-1/2 -translate-x-8">
+                    <img src="<%= user.avatar.thumbnailUrl %>" class="h-full w-full rounded-full" alt="N/A" srcset="">
+                    <i class="ri-arrow-down-s-line text-gray-500 h-fit text-2xl font-extrathin "></i>
+                </div>
+                <div class="hidden absolute right-0 top-[4rem] min-w-36 bg-white border rounded shadow-md dropdown-content">
+                    <a href="/user/setting"
+                        class="block px-4 py-2 bg-neutral-50 hover:bg-neutral-100 duration-100 font-semibold">Setting</a>                    
+                    
+                    <a href="/user/logout"
+                        class="block px-4 py-2 text-gray-800 text-white bg-red-500 hover:bg-red-600 duration-100 font-semibold">Log out</a>
+                </div>
+            </div>
+            <% }else{ %>
+                <a href="/login"
+                    class="    my-auto hover:border-b-2 border-black duration-100 text-[--nav-txt] hover:text-[--nav-txt-h] uppercase px-6 py-1 ">Login</a>
+                <a href="/register"
+                    class=" my-auto bg-slate-300 hover:bg-slate-400 rounded-full uppercase px-6 py-1 ">Register</a>
+                <% } %>
     </div>
 </nav>

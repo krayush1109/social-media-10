@@ -9,8 +9,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index.routes');
 var userRouter = require('./routes/user.routes');
 
-var app = express();
+// express-fileupload to be used with imagekit
+var fileUpload = require('express-fileupload')
 
+var app = express();
+  
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -41,6 +44,12 @@ passport.serializeUser(UserCollection.serializeUser());
 passport.deserializeUser(UserCollection.deserializeUser());
 
 // ------------- passport & session config -------------
+
+// config: express-fileupload to be used with imagekit
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+}));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
