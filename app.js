@@ -8,6 +8,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index.routes');
 var userRouter = require('./routes/user.routes');
+var updateRouter = require('./routes/update.routes');
 
 // express-fileupload to be used with imagekit
 var fileUpload = require('express-fileupload')
@@ -59,6 +60,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/update', updateRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

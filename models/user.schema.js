@@ -37,9 +37,9 @@ const user_schema = mongoose.Schema({
 
 user_schema.plugin(plm);
 
-const User_Collection = mongoose.model("social-media", user_schema)
+const UserCollection = mongoose.model("social-media", user_schema)
 
 console.log("Schema Created");
 
-module.exports = User_Collection;
+module.exports = UserCollection;
 

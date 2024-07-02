@@ -3,19 +3,18 @@ var router = express.Router();
 
 const path = require('path')
 
+const UserCollection = require('../models/user.schema');
 // middleware
 const { isLoggedIn } = require('../middleware/auth');
 
 // ------------ passport routes ------------ 
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
-const UserCollection = require('../models/user.schema');
-const { sendMail } = require('../utils/sendMail');
-const User_Collection = require('../models/user.schema');
-const imagekit = require('../utils/imagekit');
-
 passport.use(new LocalStrategy(UserCollection.authenticate()))
 // ------------ passport routes ------------ 
+
+const { sendMail } = require('../utils/sendMail');
+const imagekit = require('../utils/imagekit');
 
 /* GET users listing. */
 
@@ -68,7 +67,7 @@ router.post('/send-mail', async (req, res, next) => {
 router.post('/verify-otp/:id', async (req, res, next) => {
   const { otp_inp } = req.body;
   try {
-    const user = await User_Collection.findById(req.params.id);
+    const user = await UserCollection.findById(req.params.id);
     if (!user)
       return res.send(`No User Found with the Email: ${req.body.email}. <a href="/forgot">Try Again</a>`);
 
@@ -104,7 +103,7 @@ router.post('/reset_pwd/:id', async (req, res, next) => {
   const { password, cpassword } = req.body;
 
   try {
-    const user = await User_Collection.findById(req.params.id);
+    const user = await UserCollection.findById(req.params.id);
     if (!user)
       return res.send(`No User Found with the Email: ${req.body.email}`);
 
@@ -169,5 +168,6 @@ router.get('/delete/:id', isLoggedIn, async (req, res, next) => {
 
   res.redirect('/register');
 })
+
 
 module.exports = router;

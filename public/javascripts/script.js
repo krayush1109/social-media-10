@@ -33,5 +33,20 @@ avatar_img.addEventListener('click', () => {
 avatar_input.addEventListener('change', () => {
     avatar_form.submit();
 })
-
 // PROFILE IMAGE CLICKING ON - SETTING PAGE
+
+// ------------ Handle - Edit bio ------------
+const bio_input = document.querySelector('#bio-input');
+const edit_btn = document.querySelector('#edit-btn');
+const save_btn = document.querySelector('#save-btn');
+
+const handleBio = () => {
+    bio_input.toggleAttribute('disabled');
+
+    // Toggle visibility of buttons
+    edit_btn.classList.toggle('hidden');
+    save_btn.classList.toggle('hidden');
+}
+// ------------ Handle - Edit bio ------------
+
+

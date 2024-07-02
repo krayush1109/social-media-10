@@ -8,11 +8,12 @@
 
         <div id="sidebar" class="min-w-52 mr-10 flex flex-col justify-between text-lg font-semibold ">
           <div class="flex flex-col">
-            <p class=" bg-gray-200 hover:bg-gray-300 cursor-pointer  px-4 py-3   "><i class="ri-user-fill"></i> Edit
+            <p class=" bg-gray-200 hover:bg-gray-300 cursor-pointer  px-4 py-3   "><i class="ri-user-line"></i> Edit
               Profile</p>
-            <p class=" hover:bg-gray-300 cursor-pointer  px-4 py-3   "><i class="ri-question-fill"></i> Help</p>
+            <p class=" hover:bg-gray-300 cursor-pointer  px-4 py-3   "><i class="ri-question-line"></i> Help</p>
             <hr class="my-8">
-            <a href="/user/delete/<%= user._id %>" class=" bg-red-600 hover:bg-red-500 cursor-pointer text-white px-4 py-3 "><i
+            <a href="/user/delete/<%= user._id %>"
+              class=" border-1 border-red-400 hover:bg-red-500 cursor-pointer text-red-600 hover:text-white px-4 py-3 "><i
                 class="ri-delete-bin-2-line"></i> Delete Account</a>
           </div>
           <div>
@@ -21,39 +22,148 @@
         </div>
 
         <div id="rhs-setting" class="h-full w-full">
-          <!-- setting title -->          
+          <!-- setting title -->
           <div id="header-setting" class="w-full h-fit  ">
             <div id="header-setting-in" class="flex justify-between items-center w-full h-fit">
-              
+
               <div class="h-fit ">
                 <h1 class="text-4xl font-bold">Settings</h1>
                 <p class="text-lg my-3">Control your profile setup</p>
               </div>
               <a href="/user/logout"
-                class=" bg-red-500 hover:bg-red-600 text-white w-fit h-fit font-bold rounded-full  px-6 py-1 ">Log
+                class="border-2 shadow border-red-500 hover:bg-red-600 text-red-500 hover:text-white w-fit h-fit font-bold rounded-full  px-6 py-1 ">Log
                 out</a>
             </div>
             <hr>
           </div>
           <!-- setting pg: PROFILE IMAGE -->
           <div id="setting-content" class="w-full h-fit flex items-center my-3">
-            
-            <form action="/user/avatar/<%= user._id%>" method="post" enctype="multipart/form-data" id="avatar-form" class=" h-fit ">
+
+            <form action="/user/avatar/<%= user._id%>" method="post" enctype="multipart/form-data" id="avatar-form"
+              class=" h-fit ">
               <img src="<%= user.avatar.url %>" id="avatar-img" class="w-36 h-36 rounded-full object-cover" alt="N/A">
               <input type="file" name="avatar" id="avatar-input" class="hidden">
             </form>
             <div class="h-24 w-[2px] bg-gray-200 m-6"></div>
-            
+
+            <!-- display: EMAIL & BIO -->
             <div class="font-semibold text-lg flex flex-col gap-4 ">
-              <h1 class=" text-gray-500 cursor-default">Email: <%= user.email %></h1>
-              <div class="flex gap-2" >
-               <p>Bio: </p><textarea type="text" rows="" cols="28" class="px-3 py-1" placeholder="Enter your bio here..."></textarea>
-              </div>
+              <h1 class=" text-gray-800 cursor-default">Email: <span class="font-normal cursor-no-drop ">
+                  <%= user.email %>
+                </span></h1>
+              <form action="/update/bio/<%= user._id%>" method="post" class="flex gap-2">
+                <p class="">Bio: </p><textarea id="bio-input" name="bio" type="text" disabled rows="" cols="28"
+                  class="px-3 py-1 text-gray-800 font-normal"
+                  placeholder="Enter your bio here..."><%= user.bio%></textarea>
+                <a id="edit-btn" onclick="handleBio()"
+                  class="cursor-pointer px-2 h-fit border-2 border-indigo-300 text-indigo-600 hover:text-white hover:bg-indigo-600 rounded-lg"><i
+                    class="ri-edit-line"></i> Edit</a>
+                <button id="save-btn" type="submit"
+                  class="hidden px-2 h-fit border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white rounded-lg"><i
+                    class="ri-save-line"></i> Save</button>
+              </form>
             </div>
+
 
           </div>
 
+          <div class="w-full h-[26rem] flex gap-4">
 
+            <!-- LHS BOX - RIGHT LOWER -->
+            <form action="/update/username/<%= user._id %>" method="post" class="w-1/2 h-full bg-white border border-gray-200 rounded-lg shadow px-6 py-4 flex flex-col gap-4">
+
+              <div>
+                <h1 class="text-xl font-semibold">Username</h1>
+                <p class="text-md text-gray-600">Enter new username to make update</p>
+              </div>
+
+
+              <div>
+                <div class="inp-container ">
+                  <p class="font-semibold">Current username</p>
+                  <div class="relative">
+                    <input type="text" name=""
+                      class="inp px-2 pl-14 py-2 my-2 w-full rounded-lg border-2 border-gray-300 focus:border-purple-500 text-gray-500 font-semibold cursor-no-drop "
+                      placeholder="Current Username" value="<%= user.username %>" disabled>
+                    <i
+                      class="ri-user-follow-line absolute top-1/2 left-2 -translate-y-1/2 text-gray-400 text-2xl pr-2 border-2 border-r-gray-200 border-white"></i>
+                  </div>
+                </div>
+
+                <div class="inp-container ">
+                  <p class="font-semibold">New username</p>
+                  <div class="relative">
+                    <input type="text" name="newUsername"
+                      class="inp px-2 pl-14 py-2 my-2 w-full rounded-lg border-2 border-gray-300 focus:border-purple-500 text-black font-semibold "
+                      placeholder="Enter Username">
+                    <i
+                      class="ri-edit-line absolute top-1/2 left-2 -translate-y-1/2 text-gray-400 text-2xl pr-2 border-2 border-r-gray-200 border-white"></i>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit"
+                class="w-full border-[--primary-h] hover:bg-[--primary] border-2 rounded-full px-4 py-2 text-[--primary] hover:text-white text-xl font-bold ">Update</button>
+
+
+
+            </form>
+
+
+            <!-- RHS BOX - RIGHT LOWER : PASSWORD CONTAINER -->
+            <form action="/update/updatePassword/<%= user._id %>" method="post"
+              class="w-1/2 h-full bg-white border border-gray-200 rounded-lg shadow px-6 py-4 flex flex-col justify-between ">
+              <div>
+                <h1 class="text-xl font-semibold">Update Password</h1>
+                <p class="text-md text-gray-600">Enter your current password to make update</p>
+              </div>
+
+
+              <div class="inp-container-main">
+                <!-- current password container -->
+                <div class="inp-container ">
+                  <p class="font-semibold">Current Password</p>
+                  <div class="relative">
+                    <input type="password" name="currentPassword"
+                      class="inp px-2 pl-14 py-2 my-2 w-full rounded-lg border-2 border-gray-300 focus:border-purple-500 "
+                      placeholder="Enter Password">
+                    <i
+                      class="ri-lock-line absolute top-1/2 left-2 -translate-y-1/2 text-gray-400 text-2xl pr-2 border-2 border-r-gray-200 border-white"></i>
+                  </div>
+                </div>
+
+                <!-- New password container -->
+                <div id="all-input-main-container">
+                  <div class="inp-container ">
+                    <p class="font-semibold">New Password</p>
+                    <div class="relative">
+                      <input type="password" name="newPassword"
+                        class="inp px-2 pl-14 py-2 my-2 w-full rounded-lg border-2 border-gray-300 focus:border-purple-500 "
+                        placeholder="Enter New Password">
+                      <i
+                        class="ri-lock-line absolute top-1/2 left-2 -translate-y-1/2 text-gray-400 text-2xl pr-2 border-2 border-r-gray-200 border-white"></i>
+                    </div>
+                  </div>
+
+                  <!-- New password container -->
+                  <div class="inp-container ">
+                    <p class="font-semibold">Confirm - New Password</p>
+                    <div class="relative">
+                      <input type="password" name="confirmPassword"
+                        class="inp px-2 pl-14 py-2 my-2 w-full rounded-lg border-2 border-gray-300 focus:border-purple-500 "
+                        placeholder="Enter Confirm Password">
+                      <i
+                        class="ri-lock-line absolute top-1/2 left-2 -translate-y-1/2 text-gray-400 text-2xl pr-2 border-2 border-r-gray-200 border-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit"
+                class="w-full bg-[--primary] hover:bg-[--primary-h] rounded-full px-4 py-2 text-white text-xl font-bold ">Update</button>
+
+            </form>
+          </div>
 
         </div>
 
