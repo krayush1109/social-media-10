@@ -1,7 +1,39 @@
 <%- include('./partials/header') %>
   <%- include('./partials/navbar') %>
+  <!-- <h1 class="text-4xl text-center my-10" >Welcome to <span class="text-[--primary] font-semibold "> <%= title %></span></h1> -->
 
 
-    <h1 class="text-4xl text-center my-10" >Welcome to <span class="text-[--primary] font-semibold "> <%= title %></span></h1>
+<main class="py-10 ">
+  <section class="my-10 mt-0">
+    <h2 class="text-3xl text-center text-[--primary] font-bold mb-6">Our Mission</h2>
+    <p class="text-lg leading-relaxed">
+      At <%= title %>, our mission is to connect people from all around the world and foster meaningful interactions. We
+        believe in the power of social media to bring communities together, share ideas, and create lasting memories.
+        Our platform is designed to be user-friendly, secure, and inclusive, providing a space where everyone can
+        express themselves freely and connect with others.
+    </p>
+  </section>
+
+  <section class="my-10">
+    <h2 class="text-3xl text-center text-[--primary] font-bold mb-6">Our Story</h2>
+    <p class="text-lg leading-relaxed">
+      Founded in 2024, <%= title %> started as a small project with a big vision: to create a social media platform that
+        prioritizes user experience and community engagement. Over the years, we have grown into a vibrant community of
+        users who share a passion for staying connected and making a positive impact online. Our team is dedicated to
+        continuously improving the platform and introducing new features that enhance the way people interact with each
+        other.
+    </p>
+  </section>
+
+  <section class="my-10">
+    <h2 class="text-3xl text-center text-[--primary] font-bold mb-6">Contact Us</h2>
+    <p class="text-lg leading-relaxed text-center">
+      Have questions or feedback? We'd love to hear from you! Reach out to us at <a
+        href="mailto:contact@<%= title.toLowerCase() %>.com" class="text-[--primary] font-semibold">contact@<%=
+          title.toLowerCase() %>.com</a> or follow us on our social media channels.
+    </p>
+  </section>
+</main>
+
 
     <%- include('./partials/footer') %>

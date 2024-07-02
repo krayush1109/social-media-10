@@ -6,20 +6,17 @@ body > *{
   padding: 0 17rem;
 } 
 
-.bg-gradient{
-  @apply bg-gradient-to-br from-[#a165f6] from-0% to-[#e860d8] to-100%
-}
-
 :root{
   --primary-grad: linear-gradient(131deg, rgba(161, 101, 246, 1) 0%, rgba(232, 96, 216, 1) 100%);
   --nav-txt:#0F172A;
   --nav-txt-h: #475569;
   
   --primary: #8435F3;
-  --primary-h: #a165f6;
+  --primary-h: #8b5cf6;
 
+  /* --secondary: #E233CD; */
   --secondary: #E233CD;
-  --secondary-h: #e860d8;
+  --secondary-h: #d946ef;
 
   --tertiary: #3545F3;
   --tertiary-h: #6571F6;

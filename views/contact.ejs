@@ -1,13 +1,60 @@
 <%- include('./partials/header') %>
   <%- include('./partials/navbar') %>
 
-  <div>
-    <h1 class="text-4xl text-center my-10" >Welcome to <span class="text-[--primary] font-semibold "> <%= title %></span></h1>
+    <main class="container mx-auto px-4 pb-10 ">
+      <section class="my-10">
+        <h2 class="text-3xl text-center text-[--primary] font-bold mb-6">Contact Us</h2>
+        <p class="text-lg leading-relaxed text-center mb-8">
+          We'd love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to
+          reach out to us.
+        </p>
 
-    <div class="w-[20vw] mx-auto">
-      <img src="/images/contact-us.png" alt="">
-    </div>
+      </section>
 
-  </div>
+      <div class="flex justify-between">
+        <section class="my-10 w-1/2 flex flex-col justify-center">
+          <h2 class="text-3xl text-center text-[--primary] font-bold mb-6">Other Ways to Contact Us</h2>
+          <div class="text-lg leading-relaxed text-center flex flex-col gap-2">
+            <p class="mb-4">Email: <a href="mailto:contact@<%= title.toLowerCase() %>.com"
+                class="text-[--primary] font-semibold">contact@<%= title.toLowerCase() %>.com</a></p>
+            <p class="mb-4">Phone: <span class="font-semibold">+1 (123) 456-7890</span></p>
+            <p class="mb-4">Address: <span class="font-semibold">123 Social Media St, Networking City, NT 12345</span>
+            </p>
+            <p class="mb-4">
+              Follow us on:
+              <a href="#" class="text-[--primary] font-semibold mx-2">Facebook</a> |
+              <a href="#" class="text-[--primary] font-semibold mx-2">Twitter</a> |
+              <a href="#" class="text-[--primary] font-semibold mx-2">Instagram</a>
+            </p>
+          </div>
+        </section>
+
+        <section class="w-1/2">
+          <form id="contact-form" class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+            <div class="mb-4">
+              <label for="name" class="block text-lg font-semibold mb-2">Name</label>
+              <input type="text" id="name" name="name"
+                class="w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-[--primary]"
+                required>
+            </div>
+            <div class="mb-4">
+              <label for="email" class="block text-lg font-semibold mb-2">Email</label>
+              <input type="email" id="email" name="email"
+                class="w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-[--primary]"
+                required>
+            </div>
+            <div class="mb-4">
+              <label for="message" class="block text-lg font-semibold mb-2">Message</label>
+              <textarea id="message" name="message" rows="5"
+                class="w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-[--primary]"
+                required></textarea>
+            </div>
+            <button type="submit"
+              class="w-full bg-[--primary] text-white py-2 rounded-lg hover:bg-[--primary-h]">Send
+              Message</button>
+          </form>
+        </section>
+      </div>
+    </main>
 
     <%- include('./partials/footer') %>
