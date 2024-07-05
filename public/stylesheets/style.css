@@ -6,6 +6,25 @@ body > *{
   padding: 0 17rem;
 } 
 
+/* ------ All post scroll page -----  */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #dadada;
+  border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b5b5b5;
+}
+
+/* ------ All post scroll page -----  */
 :root{
   --primary-grad: linear-gradient(131deg, rgba(161, 101, 246, 1) 0%, rgba(232, 96, 216, 1) 100%);
   --nav-txt:#0F172A;
@@ -31,4 +50,6 @@ body > *{
 
   /* ------------------ */
   --container-h1: calc(100vh - 5rem);
+  --container-h2: calc(100vh - 12rem);
 }
+

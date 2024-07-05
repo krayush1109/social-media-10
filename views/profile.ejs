@@ -2,13 +2,13 @@
   <%- include('./partials/navbar') %>
 
     <section id="setting-pg"
-      class="min-h-[--container-h1] py-10 bg-[--setting-bg] px-10 mx-[17rem] border border-gray-200 rounded-lg shadow light:bg-gray-800">
+      class="h-[--container-h1] bg-[--setting-bg] px-10 pr-0 mx-[17rem] border border-gray-200 rounded-lg shadow light:bg-gray-800 ">
 
-      <div id="setting-pg-in" class="w-full h-full flex">
+      <div id="setting-pg-in" class="w-full h-full flex ">
 
         <%- include('./partials/sidebar_setting') %>
 
-          <section class="w-full h-full ">
+          <section class="w-full h-full overflow-y-scroll pt-10 pr-8 custom-scrollbar">
             <!-- PROFILE HERO SECTION -->
             <div id="profile-hero-section" class="h-fit w-full pb-3 ">
               <!-- setting title -->
@@ -16,7 +16,7 @@
                 <div id="header-setting-in" class="flex justify-between items-center w-full h-fit">
 
                   <div class="h-fit ">
-                    <h1 class="text-4xl font-bold">Profile Feeds</h1>
+                    <h1 class="text-4xl font-bold">Profile</h1>
                     <p class="text-lg my-3">Control your profile setup</p>
                   </div>
 
@@ -78,17 +78,25 @@
 
                   <!-- 2nd row for: upload btn and post btn -->
                   <div class="flex justify-between" >
-                    <a onclick="handlePostUpload()" class="font-semibold rounded-full border-2 border-gray-300 hover:border-[--primary] hover:text-purple-800 hover:shadow-lg  px-4 py-1 cursor-pointer "><i class="ri-image-line mr-2"></i> Upload Image</a>
-                    <input id="upload_post_inp" type="file" name="media" class="" >
-                    <button type="submit" class="bg-[--primary] hover:bg-[--primary-h] rounded-lg font-semibold text-white px-5 " >Post</button>
+                    <div >
+                      <a onclick="handlePostUpload()" class="font-semibold rounded-full border-2 border-gray-300 hover:border-[--primary] hover:text-purple-800 hover:shadow-lg  px-4 py-1 cursor-pointer "><i class="ri-image-line mr-2"></i> Upload Image</a>                    
+                      <p class="ml-2 mt-2" id="postUploadMsg" >No File Selected</p>
+                    </div>
+                    <input id="upload_post_inp" type="file" name="media" class="hidden" > 
+                    <button type="submit" class="bg-[--primary] hover:bg-[--primary-h] rounded-lg font-semibold text-white px-5  h-10" >Post</button>
                   </div>
                 </form>
               </div>
-              <!-- CREATE & SHOW ALL POST  -->
-              <section>
 
+
+              <!-- CREATE & SHOW ALL POST  -->
+              <section class="min-h-screen">
+                <div>
+                  <p class="my-3 text-xl font-bold">All Posts <i class="ri-arrow-down-s-line"></i></p>
+                </div>
               </section>
             </section>
+
 
           </section>
 

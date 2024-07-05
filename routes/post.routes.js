@@ -28,7 +28,7 @@ router.post('/create', isLoggedIn, async (req, res, next) => {
         await newPost.save();
         await req.user.save();
 
-        res.send('Post Created Successfully');
+        res.redirect('/user/profile');
     } catch (error) {
         console.log(error);
         res.send(error);

@@ -83,5 +83,17 @@ nav_links.forEach((e) => {
 
 // upload btn - clicking
 const handlePostUpload = () => {   
-    document.querySelector('#upload_post_inp').click();
+    const upload_post_inp = document.querySelector('#upload_post_inp');
+    upload_post_inp.click();
+
+
+    upload_post_inp.addEventListener('change', (e) => {
+        const postUploadMsg = document.querySelector('#postUploadMsg');    
+        if (e.target.files[0]) {
+            console.log(e.target.files[0].name);
+            postUploadMsg.textContent = e.target.files[0].name;
+        }
+    })
+
+
 }
