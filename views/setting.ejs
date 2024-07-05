@@ -6,20 +6,7 @@
 
       <div id="setting-pg-in" class="w-full h-full flex">
 
-        <div id="sidebar" class="min-w-52 mr-10 flex flex-col justify-between text-lg font-semibold ">
-          <div class="flex flex-col">
-            <p class=" bg-gray-200 hover:bg-gray-300 cursor-pointer  px-4 py-3   "><i class="ri-user-line"></i> Edit
-              Profile</p>
-            <p class=" hover:bg-gray-300 cursor-pointer  px-4 py-3   "><i class="ri-question-line"></i> Help</p>
-            <hr class="my-8">
-            <a href="/user/delete/<%= user._id %>"
-              class=" border-1 border-red-400 hover:bg-red-500 cursor-pointer text-red-600 hover:text-white px-4 py-3 "><i
-                class="ri-delete-bin-2-line"></i> Delete Account</a>
-          </div>
-          <div>
-            <p class="hover:bg-gray-300 cursor-pointer pl-2 py-3"><i class="ri-group-line"></i> Connect with Friends</p>
-          </div>
-        </div>
+        <%- include('./partials/sidebar_setting') %>
 
         <div id="rhs-setting" class="h-full w-full">
           <!-- setting title -->
@@ -35,36 +22,6 @@
                 out</a>
             </div>
             <hr>
-          </div>
-          <!-- setting pg: PROFILE IMAGE -->
-          <div id="setting-content" class="w-full h-fit flex items-center my-3">
-
-            <form action="/user/avatar/<%= user._id%>" method="post" enctype="multipart/form-data" id="avatar-form"
-              class=" h-fit ">
-              <img src="<%= user.avatar.url %>" id="avatar-img" class="w-36 h-36 rounded-full object-cover" alt="N/A">
-              <input type="file" name="avatar" id="avatar-input" class="hidden">
-            </form>
-            <div class="h-24 w-[2px] bg-gray-200 m-6"></div>
-
-            <!-- display: EMAIL & BIO -->
-            <div class="font-semibold text-lg flex flex-col gap-4 ">
-              <h1 class=" text-gray-800 cursor-default">Email: <span class="font-normal cursor-no-drop ">
-                  <%= user.email %>
-                </span></h1>
-              <form action="/update/bio/<%= user._id%>" method="post" class="flex gap-2">
-                <p class="">Bio: </p><textarea id="bio-input" name="bio" type="text" disabled rows="" cols="28"
-                  class="px-3 py-1 text-gray-800 font-normal"
-                  placeholder="Enter your bio here..."><%= user.bio%></textarea>
-                <a id="edit-btn" onclick="handleBio()"
-                  class="cursor-pointer px-2 h-fit border-2 border-indigo-300 text-indigo-600 hover:text-white hover:bg-indigo-600 rounded-lg"><i
-                    class="ri-edit-line"></i> Edit</a>
-                <button id="save-btn" type="submit"
-                  class="hidden px-2 h-fit border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white rounded-lg"><i
-                    class="ri-save-line"></i> Save</button>
-              </form>
-            </div>
-
-
           </div>
 
           <div class="w-full h-[26rem] flex gap-4">
@@ -93,7 +50,7 @@
                 <div class="inp-container ">
                   <p class="font-semibold">New username</p>
                   <div class="relative">
-                    <input type="text" name="newUsername"
+                    <input required type="text" name="newUsername"
                       class="inp px-2 pl-14 py-2 my-2 w-full rounded-lg border-2 border-gray-300 focus:border-purple-500 text-black font-semibold "
                       placeholder="Enter Username">
                     <i
@@ -124,7 +81,7 @@
                 <div class="inp-container ">
                   <p class="font-semibold">Current Password</p>
                   <div class="relative">
-                    <input type="password" name="currentPassword"
+                    <input required type="password" name="currentPassword"
                       class="inp px-2 pl-14 py-2 my-2 w-full rounded-lg border-2 border-gray-300 focus:border-purple-500 "
                       placeholder="Enter Password">
                     <i
@@ -137,7 +94,7 @@
                   <div class="inp-container ">
                     <p class="font-semibold">New Password</p>
                     <div class="relative">
-                      <input type="password" name="newPassword"
+                      <input required type="password" name="newPassword"
                         class="inp px-2 pl-14 py-2 my-2 w-full rounded-lg border-2 border-gray-300 focus:border-purple-500 "
                         placeholder="Enter New Password">
                       <i
@@ -149,7 +106,7 @@
                   <div class="inp-container ">
                     <p class="font-semibold">Confirm - New Password</p>
                     <div class="relative">
-                      <input type="password" name="confirmPassword"
+                      <input required type="password" name="confirmPassword"
                         class="inp px-2 pl-14 py-2 my-2 w-full rounded-lg border-2 border-gray-300 focus:border-purple-500 "
                         placeholder="Enter Confirm Password">
                       <i

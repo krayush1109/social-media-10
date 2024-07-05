@@ -9,7 +9,8 @@ body > *{
 :root{
   --primary-grad: linear-gradient(131deg, rgba(161, 101, 246, 1) 0%, rgba(232, 96, 216, 1) 100%);
   --nav-txt:#0F172A;
-  --nav-txt-h: #475569;
+  /* --nav-txt-h: #475569; */
+  --nav-txt-h: #000000;
   
   --primary: #8435F3;
   --primary-h: #8b5cf6;

@@ -20,19 +20,21 @@ document.addEventListener('DOMContentLoaded', function () {
 // ------------ DROPDOWN BUTTON ------------
 
 // PROFILE IMAGE CLICKING ON - SETTING PAGE
-const avatar_img = document.querySelector('#avatar-img');
-const avatar_input = document.querySelector('#avatar-input');
-const avatar_form = document.querySelector('#avatar-form');
+if (window.location.pathname == '/user/profile') {
+    const avatar_img = document.querySelector('#avatar-img');
+    const avatar_input = document.querySelector('#avatar-input');
+    const avatar_form = document.querySelector('#avatar-form');
 
-console.log(avatar_img, avatar_input)
+    // console.log(avatar_img, avatar_input)
 
-avatar_img.addEventListener('click', () => {
-    avatar_input.click();
-})
+    avatar_img.addEventListener('click', () => {
+        avatar_input.click();
+    })
 
-avatar_input.addEventListener('change', () => {
-    avatar_form.submit();
-})
+    avatar_input.addEventListener('change', () => {
+        avatar_form.submit();
+    })
+}
 // PROFILE IMAGE CLICKING ON - SETTING PAGE
 
 // ------------ Handle - Edit bio ------------
@@ -50,3 +52,36 @@ const handleBio = () => {
 // ------------ Handle - Edit bio ------------
 
 
+// ACTIVE LINK - sidebar 
+if (true) {
+    const links_sidebar = document.querySelectorAll('#sidebar-in > a')
+    links_sidebar.forEach((e) => {
+
+        const pathName = window.location.pathname;
+        // console.log("Path Name", pathName);
+        // console.log(e.getAttribute('href'));
+        // console.log("side bar link : ", e);
+        if (e.getAttribute('href') == pathName) {
+            e.classList.add('bg-gray-200')
+        }
+    })
+}
+// ACTIVE LINK - sidebar
+
+// ACTIVE LINK - NAVBAR
+
+const nav_links = document.querySelectorAll('#navbar a');
+nav_links.forEach((e) => {
+    const pathname = window.location.pathname;
+
+    if (e.getAttribute('href') == pathname)
+        e.classList.add('bg-gray-300');
+})
+
+// ACTIVE LINK - NAVBAR
+
+
+// upload btn - clicking
+const handlePostUpload = () => {   
+    document.querySelector('#upload_post_inp').click();
+}

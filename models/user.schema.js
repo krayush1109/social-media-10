@@ -31,13 +31,16 @@ const user_schema = mongoose.Schema({
         type: Number,
         required: true,
         default: 0
-    }
+    },
+    posts: [{
+        type: mongoose.Schema.Types.ObjectId, ref: "post"
+    }]
 }, {timestamps: true}
 );
 
 user_schema.plugin(plm);
 
-const UserCollection = mongoose.model("social-media", user_schema)
+const UserCollection = mongoose.model("user", user_schema)
 
 console.log("Schema Created");
 

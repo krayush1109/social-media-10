@@ -27,7 +27,7 @@ router.post('/bio/:id', isLoggedIn, async (req, res, next) => {
         res.send(err, `<br /><a href="/user/setting">Setting Page</a>`)
     }
 
-    res.redirect('/user/setting');
+    res.redirect('/user/profile');
 })
 
 router.post('/username/:id', isLoggedIn, async (req, res, next) => {

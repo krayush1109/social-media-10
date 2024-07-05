@@ -33,13 +33,13 @@ router.post('/register', async (req, res, next) => {
 
 router.post('/login',
   passport.authenticate("local", {
-    successRedirect: "/user/profile",
+    successRedirect: "/user/home",
     failureRedirect: "/login",
   }),
   (req, res, next) => { });
 
-router.get('/profile', isLoggedIn, (req, res, next) => {
-  res.render("profile", { title: "Profile | Socialmedia", user: req.user })
+router.get('/home', isLoggedIn, (req, res, next) => {
+  res.render("home", { title: "Home | Socialmedia", user: req.user })
 })
 
 router.get('/logout', isLoggedIn, (req, res, next) => {
@@ -151,7 +151,7 @@ router.post('/avatar/:id', isLoggedIn, async (req, res, next) => {
     await user.save();
 
     // Redirect to the settings page
-    res.redirect("/user/setting");
+    res.redirect("/user/profile");
   } catch (err) {
     console.error(err.message);
     res.send(err);
@@ -169,5 +169,13 @@ router.get('/delete/:id', isLoggedIn, async (req, res, next) => {
   res.redirect('/register');
 })
 
+router.get('/profile', isLoggedIn, async (req, res, next) => {
+
+  res.render('profile', {title: "User's Profile Page", user: req.user});
+})
+
+router.get('/msg', isLoggedIn, async (req, res, next) => {
+  res.render('msg', {title: "User's Message Page", user: req.user});
+})
 
 module.exports = router;
