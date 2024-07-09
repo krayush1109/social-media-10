@@ -66,10 +66,10 @@
               </div>
             </div>
 
-            <section class="w-full h-full p-3 bg-[--body-bg]">
+            <section class="w-full h-full p-3 bg-[--body-bg] rounded-xl ">
 
               <!-- CREATE A POST with title & a image  -->
-              <div class="w-full flex justify-center ">
+              <div class="w-full flex justify-center border-b-gray-300 border-2 pb-6">
                 <form action="/post/create" method="post" enctype="multipart/form-data"
                   class=" bg-white h-full w-2/3 py-5 px-4 flex flex-col gap-10 shadow-md">
                   <div class="flex gap-3 w-full ">
@@ -93,8 +93,8 @@
                 </form>
               </div>
 
-
-              <!-- CREATE & SHOW ALL POST  -->
+              
+              <!-- SHOW ALL POST  -->
               <section class="min-h-screen">
                 <div>
                   <p class="my-3 text-xl font-bold">All Posts <i class="ri-arrow-down-s-line"></i></p>
@@ -120,15 +120,12 @@
 
                         <div class="card-RHS relative">
                           <i
-                            class="optionsBtn ri-more-fill text-2xl cursor-pointer p-2 rounded-full hover:bg-gray-200"></i>
+                            class="optionBtns ri-more-fill text-2xl cursor-pointer p-2 rounded-full hover:bg-gray-200"></i>
                           <div
                             class="optionsMenu hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
                             <ul>
-                              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer font-medium" onclick="editPost()">
-                                Edit
-                                Post</li>
-                              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer font-medium text-red-500"
-                                onclick="deletePost()">Delete Post</li>
+                              <a href="#" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer font-medium">Edit Post</a>
+                              <a href="/post/delete/<%= item._id %>" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer font-medium text-red-500">Delete Post</a>
                             </ul>
                           </div>
                         </div>
@@ -147,13 +144,13 @@
                       <!-- card btns -->
                       <div class="card-btns flex gap-2 justify-between">
                         <div>
-                          <div id="doLike"
-                            class="flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer">
+                          <div
+                            class="doLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer">
                             <i class="ri-heart-line text-xl"></i>
                             <p class="text-md font-medium"> Like </p>
                           </div>
-                          <div id="showLiked"
-                            class="hidden flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer shadow-md bg-pink-200">
+                          <div
+                            class="showLikes hidden flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer shadow-md bg-pink-200">
                             <i class="ri-heart-fill text-xl text-pink-600 "></i>
                             <p class="text-md font-medium text-pink-600 w-full"> Like (1)</p>
                           </div>
@@ -178,20 +175,6 @@
 
                 </div>
 
-                <div>
-                  <hr>
-                  <hr>
-
-                  <p>
-                    <% user.posts.forEach( (e)=> { %>
-                      <p>
-                        <%= e.media.thumbnailUrl %>
-                          <%= e.title %>
-                      </p>
-                      <% }) %>
-                  </p>
-                </div>
-
               </section>
             </section>
 
@@ -200,5 +183,49 @@
 
       </div>
     </section>
+
+    <script>
+      // THREE DOTS OPTION OF MY POSTS -> edit post & delete post
+      const options = document.querySelectorAll('.optionsMenu');
+      const optionBtns = document.querySelectorAll('.optionBtns');
+
+      optionBtns.forEach((optionBtn, idx) => {
+        optionBtn.addEventListener('click', () => {
+          options[idx].classList.toggle('hidden');
+        })
+      })
+
+      window.addEventListener('click', (e) => {
+        optionBtns.forEach((optionBtn, idx) => {
+          if (!optionBtn.contains(e.target) && !options[idx].contains(e.target)) {
+            options[idx].classList.add('hidden');
+          }
+        })
+
+      })
+      // THREE DOTS OPTION OF MY POSTS -> edit post & delete post
+
+
+      // like btn funtionality
+      const doLikes = document.querySelectorAll('.doLikes');
+      const showLikes = document.querySelectorAll('.showLikes');
+
+      doLikes.forEach((doLike, idx) => {
+        doLike.addEventListener('click', () => {
+          doLikes[idx].classList.toggle('hidden');
+          showLikes[idx].classList.toggle('hidden');
+        })
+      })
+
+      showLikes.forEach((showLike, idx) => {
+        showLike.addEventListener('click', () => {
+          doLikes[idx].classList.toggle('hidden');
+          showLikes[idx].classList.toggle('hidden');
+        })
+      })
+
+      // like btn funtionality
+
+    </script>
 
     <%- include('./partials/footer') %>

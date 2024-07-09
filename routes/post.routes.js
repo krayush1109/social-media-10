@@ -46,6 +46,22 @@ router.get('/like/:pid', isLoggedIn, async (req, res, next) => {
     }
 })
 
+router.get('/delete/:pid', isLoggedIn, async (req, res, next) => {
+    try {
+        const post = await PostCollection.findByIdAndDelete(req.params.pid);
+        
+        // req.user.posts.filter(item => console.log(item.toString()));
+        req.user.posts = req.user.posts.filter(item => item.toString() != req.params.pid);
 
+        await req.user.save();
+        
+        // res.json(post, req.params.pid, "POST Deleted!");
+        // res.json("Post Deleted!");  
+        res.redirect('/user/profile');
+    } catch (error) {
+        console.log(error);
+        res.render(error);
+    }
+} )
 
 module.exports = router;

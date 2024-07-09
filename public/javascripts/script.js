@@ -96,43 +96,5 @@ const handlePostUpload = () => {
 }
 // upload btn - clicking
 
-// THREE DOTS OPTION OF MY POSTS -> edit post & delete post
-const options = document.querySelector('.optionsMenu');
-const optionsBtn = document.querySelector('.optionsBtn');
-if (options && optionsBtn) {
-    optionsBtn.addEventListener('click', () => {
-        options.classList.toggle('hidden');
-    })
-}
-window.addEventListener('click', (e) => {
-    if (!optionsBtn.contains(e.target) && !options.contains(e.target)) {
-        options.classList.add('hidden');
-    }
 
-})
 
-function editPost() {
-    alert('Edit Post clicked');
-    // Implement the edit post functionality here
-}
-
-function deletePost() {
-    alert('Delete Post clicked');
-    // Implement the delete post functionality here
-}
-// THREE DOTS OPTION OF MY POSTS -> edit post & delete post
-
-// like btn funtionality
-const doLike = document.querySelector('#doLike');
-const showLiked = document.querySelector('#showLiked');
-if (doLike && showLiked) {
-    doLike.addEventListener('click', () => {
-        doLike.classList.toggle('hidden');
-        showLiked.classList.toggle('hidden');
-    })
-    showLiked.addEventListener('click', () => {
-        doLike.classList.toggle('hidden');
-        showLiked.classList.toggle('hidden');
-    })
-}
-// like btn funtionality
