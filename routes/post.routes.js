@@ -35,4 +35,17 @@ router.post('/create', isLoggedIn, async (req, res, next) => {
     }
 })
 
+router.get('/like/:pid', isLoggedIn, async (req, res, next) => {
+    try {
+        const likedPost = await PostCollection.findById(req.params.pid);
+        // console.log(first)
+        res.json(likedPost);
+    } catch (error) {
+        console.log(error)
+        res.render(error);
+    }
+})
+
+
+
 module.exports = router;

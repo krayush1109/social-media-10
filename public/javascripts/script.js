@@ -80,20 +80,59 @@ nav_links.forEach((e) => {
 
 // ACTIVE LINK - NAVBAR
 
-
 // upload btn - clicking
-const handlePostUpload = () => {   
+const handlePostUpload = () => {
     const upload_post_inp = document.querySelector('#upload_post_inp');
     upload_post_inp.click();
 
 
     upload_post_inp.addEventListener('change', (e) => {
-        const postUploadMsg = document.querySelector('#postUploadMsg');    
+        const postUploadMsg = document.querySelector('#postUploadMsg');
         if (e.target.files[0]) {
             console.log(e.target.files[0].name);
             postUploadMsg.textContent = e.target.files[0].name;
         }
     })
-
-
 }
+// upload btn - clicking
+
+// THREE DOTS OPTION OF MY POSTS -> edit post & delete post
+const options = document.querySelector('.optionsMenu');
+const optionsBtn = document.querySelector('.optionsBtn');
+if (options && optionsBtn) {
+    optionsBtn.addEventListener('click', () => {
+        options.classList.toggle('hidden');
+    })
+}
+window.addEventListener('click', (e) => {
+    if (!optionsBtn.contains(e.target) && !options.contains(e.target)) {
+        options.classList.add('hidden');
+    }
+
+})
+
+function editPost() {
+    alert('Edit Post clicked');
+    // Implement the edit post functionality here
+}
+
+function deletePost() {
+    alert('Delete Post clicked');
+    // Implement the delete post functionality here
+}
+// THREE DOTS OPTION OF MY POSTS -> edit post & delete post
+
+// like btn funtionality
+const doLike = document.querySelector('#doLike');
+const showLiked = document.querySelector('#showLiked');
+if (doLike && showLiked) {
+    doLike.addEventListener('click', () => {
+        doLike.classList.toggle('hidden');
+        showLiked.classList.toggle('hidden');
+    })
+    showLiked.addEventListener('click', () => {
+        doLike.classList.toggle('hidden');
+        showLiked.classList.toggle('hidden');
+    })
+}
+// like btn funtionality

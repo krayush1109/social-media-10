@@ -16,8 +16,8 @@
                         <p class="text-zinc-500 text-lg font-semibold underline cursor-default "><%= user.email %></p>
                     </div>
                     <form action="/user/reset_pwd/<%= user._id %>" method="post" class="flex flex-col justify-start gap-6 px-[5rem]">
-                        <input required class="px-6 py-2 rounded-full font-semibold " type="password" name="password" id="" placeholder="New password">                        
-                        <input required class="px-6 py-2 rounded-full font-semibold " type="password" name="cpassword" id="" placeholder="Confirm password">                        
+                        <input required class="px-6 py-2 rounded-full font-semibold " type="password" name="password" placeholder="New password">                        
+                        <input required class="px-6 py-2 rounded-full font-semibold " type="password" name="cpassword" placeholder="Confirm password">                        
                         
                         <button class="px-8 py-2 bg-[#e5b400] hover:bg-[#cca001] rounded-full  text-white text-xl font-semibold"
                             type="submit">Reset Password</button>

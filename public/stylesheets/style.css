@@ -8,7 +8,7 @@ body > *{
 
 /* ------ All post scroll page -----  */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {

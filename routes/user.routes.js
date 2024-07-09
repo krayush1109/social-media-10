@@ -15,6 +15,7 @@ passport.use(new LocalStrategy(UserCollection.authenticate()))
 
 const { sendMail } = require('../utils/sendMail');
 const imagekit = require('../utils/imagekit');
+const PostCollection = require('../models/post.schema');
 
 /* GET users listing. */
 
@@ -38,8 +39,10 @@ router.post('/login',
   }),
   (req, res, next) => { });
 
-router.get('/home', isLoggedIn, (req, res, next) => {
-  res.render("home", { title: "Home | Socialmedia", user: req.user })
+router.get('/home', isLoggedIn, async(req, res, next) => {
+  const posts = await PostCollection.find({});
+  // res.json(posts);
+  res.render("homeFeeds", { title: "Home | Socialmedia", user: req.user, posts })
 })
 
 router.get('/logout', isLoggedIn, (req, res, next) => {
@@ -170,11 +173,12 @@ router.get('/delete/:id', isLoggedIn, async (req, res, next) => {
 })
 
 router.get('/profile', isLoggedIn, async (req, res, next) => {
-
-  res.render('profile', {title: "User's Profile Page", user: req.user});
+  await req.user.populate("posts");
+  // res.json(req.user);
+  res.render('profile', { title: "User's Profile Page", user: req.user });
 })
 
-router.get('/msg', isLoggedIn, async (req, res, next) => {
+router.get('/msg', isLoggedIn, async (req, res, next) => {  
   res.render('msg', {title: "User's Message Page", user: req.user});
 })
 
