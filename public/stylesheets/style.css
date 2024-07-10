@@ -25,6 +25,7 @@ body > *{
 }
 
 /* ------ All post scroll page -----  */
+
 :root{
   --primary-grad: linear-gradient(131deg, rgba(161, 101, 246, 1) 0%, rgba(232, 96, 216, 1) 100%);
   --nav-txt:#0F172A;
@@ -51,5 +52,6 @@ body > *{
   /* ------------------ */
   --container-h1: calc(100vh - 5rem);
   --container-h2: calc(100vh - 12rem);
+  --container-h-profile: calc(100vh - 5.5rem);
 }
 

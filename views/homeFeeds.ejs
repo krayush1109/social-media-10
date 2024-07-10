@@ -1,12 +1,115 @@
 <%- include('./partials/header') %>
   <%- include('./partials/navbar') %>
 
+    <section id="setting-pg"
+      class="min-h-[--container-h1] bg-[--setting-bg] px-10 pr-0 mx-[17rem] border border-gray-200 rounded-lg shadow light:bg-gray-800 ">
+      
+      <h1 class="text-xl font-semibold my-4 px-5 py-1 bg-gray-200 w-fit rounded-lg" >Feeds</h1>
+      <!-- rendering all user's post only -->
+      <div class="my-4 flex flex-col-reverse gap-4">
 
-    <h1 class="text-2xl my-4 text-right font-semibold"><%= title %></h1>
-    <h1 class="text-4xl text-center my-10" >Welcome <span class="text-[--primary] font-semibold "> <%= user.username %></span></h1>
+        <% posts.forEach((item)=>{ %>
 
-    <div>
-      <p><%= JSON.stringify(posts) %></p>
-    </div>
+          <div id="card-container" class="card w-2/3 mx-auto bg-white pt-5 pb-3 px-4 shadow-lg">
+            <!-- card header -->
+            <div class="card-header flex justify-between">
+              <div class="card-LHS flex gap-3 w-full ">
+                <img class="w-12 h-12 rounded-full" src="<%= item.user.avatar.thumbnailUrl %>" alt="NA">
+                <div>
+                  <p class="text-lg font-semibold">
 
-    <%- include('./partials/footer') %>
+                    <%= item.user.username %>
+
+                  </p>
+                  <p class="text-sm text-gray-500">15Mins ago</p>
+                </div>
+              </div>
+
+              <div class="card-RHS relative hidden">
+                <i class="optionBtns ri-more-fill text-2xl cursor-pointer p-2 rounded-full hover:bg-gray-200"></i>
+                <div
+                  class="optionsMenu hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                  <ul>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer font-medium">Edit
+                      Post</a>
+                    <a href="/post/delete/<%= item._id %>"
+                      class="block px-4 py-2 hover:bg-gray-100 cursor-pointer font-medium text-red-500">Delete
+                      Post</a>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- card body -->
+            <div class="card-body pt-4 pb-2">
+              <div class="h-96 w-full overflow-hidden">
+                <img class="w-full h-full object-center object-cover " src="<%= item.media.url %>" alt="NA">
+              </div>
+              <p class="py-2 font-medium">
+                <%= item.title %>
+              </p>
+            </div>
+
+            <!-- card btns -->
+            <div class="card-btns flex gap-2 justify-between">
+              <div>
+                <% if(!item.likes.includes(user._id)) { %>
+                  <a href="/post/like/<%= item._id %>"
+                    class="doLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer">
+                    <i class="ri-heart-line text-xl"></i>
+                    <p class="text-md font-medium"> Like (<%= item.likes.length %>) </p>
+                  </a>
+                  <% } else{ %>
+
+                    <a href="/post/like/<%= item._id %>"
+                      class="showLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer shadow-md bg-pink-200 ">
+                      <i class="ri-heart-fill text-xl text-pink-600 "></i>
+                      <p class="text-md font-medium text-pink-600 w-full"> Like (<%= item.likes.length %>)
+                      </p>
+                    </a>
+
+                    <% } %>
+              </div>
+
+              <div class="flex items-start gap-1 w-fit h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer">
+                <i class="ri-chat-2-line text-xl"></i>
+                <p class="text-md font-medium"> Comment </p>
+              </div>
+              <div class="flex items-start gap-1 w-fit h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer">
+                <i class="ri-share-forward-line text-xl"></i>
+                <p class="text-md font-medium"> Share </p>
+              </div>
+            </div>
+
+
+          </div>
+
+          <% }) %>
+
+      </div>
+
+      </section>
+
+      <script>
+        // THREE DOTS OPTION OF MY POSTS -> edit post & delete post
+        const options = document.querySelectorAll('.optionsMenu');
+        const optionBtns = document.querySelectorAll('.optionBtns');
+
+        optionBtns.forEach((optionBtn, idx) => {
+          optionBtn.addEventListener('click', () => {
+            options[idx].classList.toggle('hidden');
+          })
+        })
+
+        window.addEventListener('click', (e) => {
+          optionBtns.forEach((optionBtn, idx) => {
+            if (!optionBtn.contains(e.target) && !options[idx].contains(e.target)) {
+              options[idx].classList.add('hidden');
+            }
+          })
+
+        })
+        // THREE DOTS OPTION OF MY POSTS -> edit post & delete post
+      </script>
+
+      <%- include('./partials/footer') %>

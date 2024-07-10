@@ -8,7 +8,7 @@
 
         <%- include('./partials/sidebar_setting') %>
 
-          <section class="w-full h-full overflow-y-scroll pt-10 pr-8 custom-scrollbar">
+          <section class="w-full h-[--container-h-profile] overflow-y-scroll pt-10 pr-8 custom-scrollbar">
             <!-- PROFILE HERO SECTION -->
             <div id="profile-hero-section" class="h-fit w-full pb-3 ">
               <!-- setting title -->
@@ -66,7 +66,7 @@
               </div>
             </div>
 
-            <section class="w-full h-full p-3 bg-[--body-bg] rounded-xl ">
+            <section class="w-full h-fit p-3 bg-[--body-bg] rounded-xl ">
 
               <!-- CREATE A POST with title & a image  -->
               <div class="w-full flex justify-center border-b-gray-300 border-2 pb-6">
@@ -93,7 +93,7 @@
                 </form>
               </div>
 
-              
+
               <!-- SHOW ALL POST  -->
               <section class="min-h-screen">
                 <div>
@@ -101,7 +101,7 @@
                 </div>
 
                 <!-- rendering all user's post only -->
-                <div class="my-4 flex flex-col-reverse gap-4">
+                <div class="my-4 flex flex-col-reverse gap-4 pb-36">
 
                   <% user.posts.forEach((item)=>{ %>
 
@@ -124,8 +124,11 @@
                           <div
                             class="optionsMenu hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
                             <ul>
-                              <a href="#" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer font-medium">Edit Post</a>
-                              <a href="/post/delete/<%= item._id %>" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer font-medium text-red-500">Delete Post</a>
+                              <a href="#" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer font-medium">Edit
+                                Post</a>
+                              <a href="/post/delete/<%= item._id %>"
+                                class="block px-4 py-2 hover:bg-gray-100 cursor-pointer font-medium text-red-500">Delete
+                                Post</a>
                             </ul>
                           </div>
                         </div>
@@ -144,16 +147,22 @@
                       <!-- card btns -->
                       <div class="card-btns flex gap-2 justify-between">
                         <div>
-                          <div
-                            class="doLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer">
-                            <i class="ri-heart-line text-xl"></i>
-                            <p class="text-md font-medium"> Like </p>
-                          </div>
-                          <div
-                            class="showLikes hidden flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer shadow-md bg-pink-200">
-                            <i class="ri-heart-fill text-xl text-pink-600 "></i>
-                            <p class="text-md font-medium text-pink-600 w-full"> Like (1)</p>
-                          </div>
+                          <% if(!item.likes.includes(user._id)) { %>                            
+                              <a href="/post/like/<%= item._id %>"
+                                class="doLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer">
+                                <i class="ri-heart-line text-xl"></i>
+                                <p class="text-md font-medium"> Like (<%= item.likes.length %>) </p>
+                              </a>
+                              <% } else{ %>
+
+                                <a href="/post/like/<%= item._id %>"
+                                  class="showLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer shadow-md bg-pink-200">
+                                  <i class="ri-heart-fill text-xl text-pink-600 "></i>
+                                  <p class="text-md font-medium text-pink-600 w-full"> Like (<%= item.likes.length %>)
+                                  </p>
+                                </a>
+
+                              <% } %>
                         </div>
 
                         <div
@@ -207,22 +216,22 @@
 
 
       // like btn funtionality
-      const doLikes = document.querySelectorAll('.doLikes');
-      const showLikes = document.querySelectorAll('.showLikes');
+      // const doLikes = document.querySelectorAll('.doLikes');
+      // const showLikes = document.querySelectorAll('.showLikes');
 
-      doLikes.forEach((doLike, idx) => {
-        doLike.addEventListener('click', () => {
-          doLikes[idx].classList.toggle('hidden');
-          showLikes[idx].classList.toggle('hidden');
-        })
-      })
+      // doLikes.forEach((doLike, idx) => {
+      //   doLike.addEventListener('click', () => {
+      //     doLikes[idx].classList.toggle('hidden');
+      //     showLikes[idx].classList.toggle('hidden');
+      //   })
+      // })
 
-      showLikes.forEach((showLike, idx) => {
-        showLike.addEventListener('click', () => {
-          doLikes[idx].classList.toggle('hidden');
-          showLikes[idx].classList.toggle('hidden');
-        })
-      })
+      // showLikes.forEach((showLike, idx) => {
+      //   showLike.addEventListener('click', () => {
+      //     doLikes[idx].classList.toggle('hidden');
+      //     showLikes[idx].classList.toggle('hidden');
+      //   })
+      // })
 
       // like btn funtionality
 

@@ -39,10 +39,11 @@ router.post('/login',
   }),
   (req, res, next) => { });
 
-router.get('/home', isLoggedIn, async(req, res, next) => {
-  const posts = await PostCollection.find({});
-  // res.json(posts);
-  res.render("homeFeeds", { title: "Home | Socialmedia", user: req.user, posts })
+router.get('/home', isLoggedIn, async (req, res, next) => {
+  const posts = await PostCollection.find({ user: {$ne: req.user._id} }).populate("user");
+
+
+  res.render("homeFeeds", { title: "Home | Socialmedia", user: req.user, posts });
 })
 
 router.get('/logout', isLoggedIn, (req, res, next) => {
@@ -178,8 +179,8 @@ router.get('/profile', isLoggedIn, async (req, res, next) => {
   res.render('profile', { title: "User's Profile Page", user: req.user });
 })
 
-router.get('/msg', isLoggedIn, async (req, res, next) => {  
-  res.render('msg', {title: "User's Message Page", user: req.user});
+router.get('/msg', isLoggedIn, async (req, res, next) => {
+  res.render('msg', { title: "User's Message Page", user: req.user });
 })
 
 module.exports = router;

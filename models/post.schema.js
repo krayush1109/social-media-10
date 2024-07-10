@@ -7,7 +7,8 @@ const postSchema = mongoose.Schema({
         url: String,
         thumbnailUrl: String
     },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "user" }
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
+    likes: [{type: String}]
 }, { timestamps: true });
 
 const PostCollection = mongoose.model('post', postSchema);
