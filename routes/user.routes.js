@@ -179,8 +179,8 @@ router.get('/profile', isLoggedIn, async (req, res, next) => {
   res.render('profile', { title: "User's Profile Page", user: req.user });
 })
 
-router.get('/msg', isLoggedIn, async (req, res, next) => {
-  res.render('msg', { title: "User's Message Page", user: req.user });
+router.get('/chat', isLoggedIn, async (req, res, next) => {
+  res.render('chat', { title: "User's Message Page", user: req.user });
 })
 
 module.exports = router;

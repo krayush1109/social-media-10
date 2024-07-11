@@ -1,0 +1,213 @@
+<%- include('./partials/header') %>
+    <%- include('./partials/navbar') %>
+
+
+
+
+        <section class="h-[--container-h1]  w-full flex p-0 overflow-y-hidden">
+            <nav class="w-[5%] h-screen  bg-[#181f2e] flex flex-col justify-between text-[1.5vmax] text-white">
+                <div class="top-nav">
+                    <div class="img-avatar-box flex justify-center py-[1.25vmax] mb-[2vmax]">
+                        <!-- <img src="img/user-avatar-man.png" alt="NA" class="w-7/10"> -->
+                        <img src="/images/user-avatar-man.png" alt="NA" class="w-7/10">
+                    </div>
+                    <div class="top-sub-container flex flex-col gap-[0.2vmax]">
+                        <div
+                            class="flex items-center justify-center h-[4vmax] cursor-pointer relative transition-all duration-300 ease-linear group">
+                            <div
+                                class="cir absolute bg-teal-600 h-[4vmax] w-0 left-0 border-l-[0.2vmax] border-teal-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:border-none">
+                            </div>
+                            <i class="ri-message-2-line z-10"></i>
+                        </div>
+                        <div
+                            class="flex items-center justify-center h-[4vmax] cursor-pointer relative transition-all duration-300 ease-linear group">
+                            <div
+                                class="cir absolute bg-teal-600 h-[4vmax] w-0 left-0 border-l-[0.2vmax] border-teal-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:border-none">
+                            </div>
+                            <i class="ri-phone-fill z-10"></i>
+                        </div>
+                        <div
+                            class="flex items-center justify-center h-[4vmax] cursor-pointer relative transition-all duration-300 ease-linear group">
+                            <div
+                                class="cir absolute bg-teal-600 h-[4vmax] w-0 left-0 border-l-[0.2vmax] border-teal-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:border-none">
+                            </div>
+                            <i class="ri-user-settings-line z-10"></i>
+                        </div>
+                        <div
+                            class="flex items-center justify-center h-[4vmax] cursor-pointer relative transition-all duration-300 ease-linear group">
+                            <div
+                                class="cir absolute bg-teal-600 h-[4vmax] w-0 left-0 border-l-[0.2vmax] border-teal-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:border-none">
+                            </div>
+                            <i class="ri-notification-3-fill z-10"></i>
+                        </div>
+
+                        <div class="bottom-nav-phoneUI visibility-hidden">
+                            <div id="cir-setting" class="cir2"></div>
+                            <i class="ri-settings-2-line"></i>
+                        </div>
+                    </div>
+                    <div class="bottom-nav-phoneUI exit-container">
+                        <div id="cir-exit" class="cir2"></div>
+                        <i class="ri-login-box-line"></i>
+                    </div>
+                </div>
+                <div class="bottom-nav text-center bg-[#2e3443] flex flex-col gap-[0.1vmax]">
+                    <div class="relative w-full h-[4vmax] flex justify-center items-center cursor-pointer">
+                        <div id="cir-setting"
+                            class="absolute w-[0.2vmax] h-full left-0 bg-gray-600 transition-all duration-300 ease-in-out">
+                        </div>
+                        <i class="ri-settings-2-line z-10"></i>
+                    </div>
+                    <div class="relative w-full h-[4vmax] flex justify-center items-center cursor-pointer bg-[#bb0000]">
+                        <div id="cir-exit"
+                            class="absolute w-[0.2vmax] h-full left-0 bg-red-600 transition-all duration-300 ease-in-out">
+                        </div>
+                        <i class="ri-login-box-line z-10"></i>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="left-hero w-1/4 h-full bg-[#e2eef7] flex flex-col">
+                <div id="search-inp" class="h-[12%] flex items-center">
+                    <div id="search-inp-box" class="w-3/4 mx-auto relative">
+                        <i
+                            class="ri-search-line absolute top-1/2 transform -translate-y-1/2 left-[0.65vmax] text-[1vmax] text-gray-500"></i>
+                        <input type="text" placeholder="search..."
+                            class="w-full h-[2.4vmax] text-[1vmax] pl-[2vmax] rounded-[2.4vmax] border-none">
+                    </div>
+                </div>
+
+                <div id="chat-container" class="w-full h-[88%] flex flex-col items-center bg-[#ebf4fb] overflow-y-auto">
+
+                    <div class="chat-box w-[95%] h-[5.5vmax] flex border-b border-gray-200 mb-1">
+                        <div class="chat-content w-[90%] h-full mx-auto flex">
+                            <div class="img-box w-1/5 h-full flex items-center ">
+                                <img src="/images/user-avatar-man.png" alt="NA"
+                                    class="h-[4vmax] w-[4vmax] rounded-full">
+                            </div>
+                            <div class="lft-content w-4/5 pl-3">
+                                <div class="h-3/5 flex justify-between items-center">
+                                    <h2 class="text-[1.2vmax]">Ava Thompson</h2>
+                                    <span class="text-[1vmax] text-gray-400">1:10 PM</span>
+                                </div>
+                                <p class="h-2/5 text-[0.9vmax] text-gray-700">Analysis of foreign expense...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-box w-[95%] h-[5.5vmax] flex border-b border-gray-200 mb-1">
+                        <div class="chat-content w-[90%] h-full mx-auto flex">
+                            <div class="img-box w-1/5 h-full flex items-center ">
+                                <img src="/images/user-avatar-man.png" alt="NA"
+                                    class="h-[4vmax] w-[4vmax] rounded-full">
+                            </div>
+                            <div class="lft-content w-4/5 pl-3">
+                                <div class="h-3/5 flex justify-between items-center">
+                                    <h2 class="text-[1.2vmax]">Ava Thompson</h2>
+                                    <span class="text-[1vmax] text-gray-400">1:10 PM</span>
+                                </div>
+                                <p class="h-2/5 text-[0.9vmax] text-gray-700">Analysis of foreign expense...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!--  RIGHT HERO - Duos Conversation  -->
+            <div id="right-hero" class="w-[70%] h-full bg-white">
+                <div id="nav-r-hero" class="flex w-full h-16 ">
+                    <div
+                        class="content flex justify-between items-center w-[95%] mx-auto h-full border-b border-gray-300 font-sans text-sm">
+                        <div class="lhs-nav-r-hero flex flex-col justify-evenly h-full">
+                            <h2 class="font-semibold text-lg" >Jackson Foster</h2>
+                            <div class="flex items-center gap-3 text-gray-500">
+                                <span
+                                    class="dot-active-now w-2 h-2 inline-block bg-lime-400 rounded-full animate-blink"></span>
+                                <p>Active Now</p>
+                            </div>
+                        </div>
+                        <div class="rhs-nav-r-hero flex gap-3 justify-between items-center ">
+                            <div
+                                class="flex justify-center items-center w-10 h-10 bg-gray-200 text-xl rounded-full cursor-pointer">
+                                <i class="ri-vidicon-fill"></i>
+                            </div>
+                            <div
+                                class="flex justify-center items-center w-10 h-10 bg-gray-200 text-xl rounded-full cursor-pointer">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="main-container" class="flex flex-col justify-between items-center h-[88%] w-full bg-cover "
+                    style="background-image: url('/images/chat-bg.jpg')">
+                    <div id="main-cont-content" class="h-full w-full ">
+                        <div id="chatting-container" class="h-[95%] w-full overflow-y-scroll overflow-x-hidden flex flex-col items-center">
+                            
+                            <div class="incominnng each-chat-box flex items-center text-md font-sans text-gray-700 my-2 w-[95%]">
+                                <div class="mr-3">
+                                    <img src="/images/user-avatar-man.png" alt="" class="w-12 rounded-full shadow-sm">
+                                </div>
+                                <div class="msg-txt flex flex-col gap-3 max-w-1/2">
+                                    <p class="bg-gray-200 p-2 px-3 rounded-xl leading-6 font-semibold">Hey, how's it going? Haven't seen
+                                        you lately.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="outgoinnng each-chat-box flex items-center text-md font-sans text-gray-700 my-2 w-[95%] justify-end">
+                                <div class="hidden"></div>
+                                <div class="msg-txt flex flex-col gap-3 max-w-1/2 items-end">
+                                    <p class="bg-red-500 p-2 px-3 rounded-xl leading-6 font-semibold text-white">Yeah, been busy with work
+                                        and stuff.
+                                        You?</p>
+                                </div>
+                            </div>
+
+                            
+                            
+                        </div>
+                    </div>
+
+                    <form id="write-msg-footer"
+                        class="flex justify-center items-center h-12 w-full bg-white border-t border-gray-300">
+                        <div class="write-msg-footer-contents flex justify-between items-center h-7/10 w-11/12">
+                            <div class="emoji-box text-xl p-2 rounded-full cursor-pointer bg-gray-200 text-gray-700">
+                                <i class="ri-emotion-laugh-fill"></i>
+                            </div>
+                            <div class="emoji-box-inp w-4/5">
+                                <input type="text" placeholder="Your message here..."
+                                    class="p-2 font-sm border-none rounded-full w-full bg-gray-200">
+                            </div>
+                            <div class="emoji-box relative">
+                                <input type="file" name="attach" id="attach" class="hidden">
+                                <label for="attach" class="cursor-pointer">
+                                    <i class="ri-attachment-2"></i>
+                                </label>
+                            </div>
+                            <button type="submit"
+                                class="emoji-box send-btn bg-red-500 text-white w-12 h-12 flex justify-center items-center border-none shadow-md">
+                                <i class="ri-send-plane-fill"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+    
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <%- include('./partials/footer') %>
