@@ -15,8 +15,14 @@
               <div id="header-setting" class="w-full h-fit  ">
                 <div id="header-setting-in" class="flex justify-between items-center w-full h-fit">
 
-                  <div class="h-fit ">
-                    <h1 class="text-4xl font-bold">Profile</h1>
+                  <div class="h-fit">
+                    <div class="flex items-center gap-5">
+                      <h1 class="text-4xl font-bold">Profile</h1>
+                      <button
+                        class="bg-amber-100 hover:bg-amber-200 text-sm text-amber-500 shadow-md font-semibold px-3 py-1 h-fit rounded-lg  "
+                        id="rzp-button1"><i class="ri-star-fill text-amber-500 "></i> Get Premium Membership - Pay with
+                        Razorpay</button>
+                    </div>
                     <p class="text-lg my-3">Control your profile setup</p>
                   </div>
 
@@ -35,8 +41,8 @@
               <div id="setting-content" class="w-full h-fit flex items-center my-3">
 
                 <form action="/user/avatar/<%= user._id%>" method="post" enctype="multipart/form-data" id="avatar-form"
-                  class=" h-fit ">
-                  <img src="<%= user.avatar.url %>" id="avatar-img" class="w-36 h-36 rounded-full object-cover"
+                  class=" h-fit">
+                  <img src="<%= user.avatar.url %>" id="avatar-img" class="w-36 h-36 rounded-full object-cover shadow-sm cursor-pointer"
                     alt="N/A">
                   <input type="file" name="avatar" id="avatar-input" class="hidden">
                   <span class="text-sm text-gray-500 font-semibold">Click on Image to Upload</span>
@@ -147,20 +153,20 @@
                       <!-- card btns -->
                       <div class="card-btns flex gap-2 justify-between">
                         <div>
-                          <% if(!item.likes.includes(user._id)) { %>                            
-                              <a href="/post/like/<%= item._id %>"
-                                class="doLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer">
-                                <i class="ri-heart-line text-xl"></i>
-                                <p class="text-md font-medium"> Like (<%= item.likes.length %>) </p>
-                              </a>
-                              <% } else{ %>
+                          <% if(!item.likes.includes(user._id)) { %>
+                            <a href="/post/like/<%= item._id %>"
+                              class="doLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer">
+                              <i class="ri-heart-line text-xl"></i>
+                              <p class="text-md font-medium"> Like (<%= item.likes.length %>) </p>
+                            </a>
+                            <% } else{ %>
 
-                                <a href="/post/like/<%= item._id %>"
-                                  class="showLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer shadow-md bg-pink-200">
-                                  <i class="ri-heart-fill text-xl text-pink-600 "></i>
-                                  <p class="text-md font-medium text-pink-600 w-full"> Like (<%= item.likes.length %>)
-                                  </p>
-                                </a>
+                              <a href="/post/like/<%= item._id %>"
+                                class="showLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer shadow-md bg-pink-200">
+                                <i class="ri-heart-fill text-xl text-pink-600 "></i>
+                                <p class="text-md font-medium text-pink-600 w-full"> Like (<%= item.likes.length %>)
+                                </p>
+                              </a>
 
                               <% } %>
                         </div>
@@ -193,47 +199,104 @@
       </div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
     <script>
       // THREE DOTS OPTION OF MY POSTS -> edit post & delete post
-      const options = document.querySelectorAll('.optionsMenu');
+      const optionsMenu = document.querySelectorAll('.optionsMenu');
       const optionBtns = document.querySelectorAll('.optionBtns');
 
       optionBtns.forEach((optionBtn, idx) => {
         optionBtn.addEventListener('click', () => {
-          options[idx].classList.toggle('hidden');
+          optionsMenu[idx].classList.toggle('hidden');
         })
       })
 
       window.addEventListener('click', (e) => {
         optionBtns.forEach((optionBtn, idx) => {
-          if (!optionBtn.contains(e.target) && !options[idx].contains(e.target)) {
-            options[idx].classList.add('hidden');
+          if (!optionBtn.contains(e.target) && !optionsMenu[idx].contains(e.target)) {
+            optionsMenu[idx].classList.add('hidden');
           }
         })
 
       })
-      // THREE DOTS OPTION OF MY POSTS -> edit post & delete post
 
 
-      // like btn funtionality
-      // const doLikes = document.querySelectorAll('.doLikes');
-      // const showLikes = document.querySelectorAll('.showLikes');
+      // -------------- RAZORPAY- PAYMENT INTEGRATION -----------
+      var orderId;
+      $(document).ready(function () {
+        var settings = {
+          "url": "/create/orderId",
+          "method": "POST",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "data": JSON.stringify({
+            "amount": "50000"
+          }),
+        };
 
-      // doLikes.forEach((doLike, idx) => {
-      //   doLike.addEventListener('click', () => {
-      //     doLikes[idx].classList.toggle('hidden');
-      //     showLikes[idx].classList.toggle('hidden');
-      //   })
-      // })
+        //creates new orderId everytime
+        $.ajax(settings).done(function (response) {
 
-      // showLikes.forEach((showLike, idx) => {
-      //   showLike.addEventListener('click', () => {
-      //     doLikes[idx].classList.toggle('hidden');
-      //     showLikes[idx].classList.toggle('hidden');
-      //   })
-      // })
+          orderId = response.orderId;
+          console.log(orderId);
+          $("button").show();
+        });
+      });
 
-      // like btn funtionality
+
+      // Code to Add Pay Button
+      var options = {
+        "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
+        "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Acme Corp",
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function (response) {
+          alert(response.razorpay_payment_id);
+          alert(response.razorpay_order_id);
+          alert(response.razorpay_signature)
+        },
+        "prefill": {
+          "name": "Gaurav Kumar",
+          "email": "gaurav.kumar@example.com",
+          "contact": "9000090000"
+        },
+        "notes": {
+          "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+          "color": "#3399cc"
+        }
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.on('payment.failed', function (response) {
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+      });
+      document.getElementById('rzp-button1').onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+      }
+
+
+
+
+
+
+
 
     </script>
 

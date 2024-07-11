@@ -7,6 +7,13 @@ const UserCollection = require('../models/user.schema');
 // middleware
 const { isLoggedIn } = require('../middleware/auth');
 
+// Payment Integration with Razorpay
+const Razorpay = require('razorpay');
+var instance = new Razorpay({
+  key_id: 'YOUR_KEY_ID',
+  key_secret: 'YOUR_KEY_SECRET',
+});
+
 // ------------ passport routes ------------ 
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
@@ -181,6 +188,17 @@ router.get('/profile', isLoggedIn, async (req, res, next) => {
 
 router.get('/chat', isLoggedIn, async (req, res, next) => {
   res.render('chat', { title: "User's Message Page", user: req.user });
+})
+
+router.post('/createOrder', isLoggedIn, async (req, res, next) => {
+  var options = {
+    amount: 500 * 100,  // amount in the smallest currency unit
+    currency: "INR",
+    receipt: "order_rcptid_11"
+  };
+  instance.orders.create(options, function (err, order) {
+    console.log(order);
+  });
 })
 
 module.exports = router;
