@@ -82,7 +82,7 @@
                     <% allUsers.forEach((allUser, i) =>{ %>
 
                         <div class="chat-box w-full h-[5.5rem] flex flex-col cursor-pointer">
-                            <div class="chat-content w-full px-4 py-2 h-full mx-auto flex hover:bg-slate-600 <%= (i==1) ? "bg-slate-500": "" %> ">
+                            <div class="chat-content w-full px-4 py-2 h-full mx-auto flex hover:bg-slate-600 <%= (i==2) ? "bg-slate-500": "" %> ">
                                 <div class="img-box w-[1/5] h-full flex items-center ">
                                     <!-- <img src="/images/user-avatar-man.png" alt="NA" -->
                                     <img src="<%= allUser.avatar.thumbnailUrl %>" alt="NA"
@@ -96,7 +96,7 @@
                                     <p class="h-2/5 text-[0.9vmax] text-slate-300">Analysis of foreign expense...</p>
                                 </div>
                             </div>
-                            <div class="w-full h-[1px] bg-gray-300 "></div>
+                            <div class="w-full h-[1px] bg-gray-700 "></div>
                         </div>
 
                     <% }) %>
@@ -174,22 +174,22 @@
                         class="flex justify-center items-center h-[10%] w-full bg-slate-800 shadow-md border-l-[1px] border-slate-100">
                         <div class="write-msg-footer-contents flex justify-between items-center h-7/10 w-11/12">
                             <div
-                                class="emoji-box flex justify-center items-center p-2 w-10 h-10 rounded-full cursor-pointer bg-gray-200 text-gray-700">
+                                class="emoji-box flex justify-center items-center p-2 w-10 h-10 rounded-full cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-700">
                                 <i class="ri-emotion-laugh-fill text-2xl"></i>
                             </div>
                             <div class="emoji-box-inp w-4/5">
                                 <input type="text" placeholder="Your message here..." name="message"
-                                    class="py-2 px-5 font-semibold border-none rounded-full w-full bg-gray-200">
+                                    class="py-2 px-5 font-semibold border-none rounded-full w-full bg-gray-200 ">
                             </div>
                             <label for="attach"
-                                class="emoji-box relative bg-gray-300 p-3 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer">
+                                class="emoji-box relative bg-gray-300 hover:bg-gray-400 p-3 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer">
                                 <input type="file" name="attach" id="attach" class="hidden">
                                 <div>
                                     <i class="ri-attachment-2 text-xl"></i>
                                 </div>
                             </label>
                             <button type="submit"
-                                class="emoji-box send-btn bg-red-500 text-white w-12 h-12 flex justify-center items-center border-none shadow-md rounded-full  ">
+                                class="emoji-box send-btn bg-red-500 hover:bg-red-600 text-white w-12 h-12 flex justify-center items-center border-none shadow-md rounded-full  ">
                                 <i class="ri-send-plane-fill "></i>
                             </button>
                         </div>
