@@ -47,7 +47,7 @@ router.post('/login',
   (req, res, next) => { });
 
 router.get('/home', isLoggedIn, async (req, res, next) => {
-  const posts = await PostCollection.find({ user: {$ne: req.user._id} }).populate("user");
+  const posts = await PostCollection.find({ user: { $ne: req.user._id } }).populate("user");
 
 
   res.render("homeFeeds", { title: "Home | Socialmedia", user: req.user, posts });
@@ -187,7 +187,15 @@ router.get('/profile', isLoggedIn, async (req, res, next) => {
 })
 
 router.get('/chat', isLoggedIn, async (req, res, next) => {
-  res.render('chat', { title: "User's Message Page", user: req.user });
+  try {
+    let allUsers = await UserCollection.find({ _id: { $ne: req.user._id } })
+    // console.log(req.user);
+    // console.log(allUsers);
+    res.render('chat', { title: "User's Message Page", user: req.user, allUsers });
+  } catch (error) {
+    console.log(error.message);
+    res.send(error);
+  }
 })
 
 router.post('/createOrder', isLoggedIn, async (req, res, next) => {
