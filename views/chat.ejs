@@ -203,11 +203,15 @@
         </section>
 
 
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        console.log("Hi, Msg from Frontend.");
 
+        const loggedInUsername = "<%= user.username %>";
 
+        socket.emit('join', loggedInUsername)
 
-
-
-
+    </script>
 
         <%- include('./partials/footer') %>

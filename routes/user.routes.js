@@ -49,5 +49,6 @@ router.get('/profile', isLoggedIn, renderUserProfile)
 
 router.post('/createOrder', isLoggedIn, handleOrderCreation)
 
+router.get('/chat', isLoggedIn, getChatPage)
 
 module.exports = router;
