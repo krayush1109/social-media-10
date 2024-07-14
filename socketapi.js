@@ -22,9 +22,18 @@ io.on("connection", function (socket) {
     
     socket.on('join', async (username) => {
         const user = await UserCollection.findOneAndUpdate({ username: username }, { socketId: socket.id })
-        // console.log(username)
+        console.log(username)
+        console.log("Message Received from the Client to Server");
         // console.log(socket.id)
     })
+
+    socket.on('user_message', async (msgObject) => {
+        // const user = await UserCollection.findOneAndUpdate({ username: receiver }, { $push: { messages
+        console.log(msgObject.msg, msgObject.receiver, msgObject.sender)
+    })
+
+    // -----------------
+    
 
 });
 // end of socket.io logic
