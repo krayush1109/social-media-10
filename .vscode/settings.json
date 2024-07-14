@@ -10,7 +10,8 @@
     "**/.factorypath": true,
     "**/.project": true,
     "**/.settings": true,
-    "**/React-JS.code-workspace": true
+    "**/React-JS.code-workspace": true,
+    ".vscode": true
   },
   "hide-files.files": []
 }

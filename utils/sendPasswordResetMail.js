@@ -2,7 +2,7 @@
 const nodemailer = require("nodemailer");
 
 // Export the sendMail function
-exports.sendMail = (req, res, user) => {
+exports.sendPasswordResetMail = (req, res, user) => {
 
     const OTP = Math.floor(1000 + Math.random()*9000);
     // console.log("OTP: ", OTP);
