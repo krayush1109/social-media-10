@@ -1,23 +1,5 @@
 console.log("JS FILE IS WORKING!");
 
-// ------------ DROPDOWN BUTTON ------------
-document.addEventListener('DOMContentLoaded', function () {
-    const dropdowns = document.querySelectorAll('.dropdown');
-
-    dropdowns.forEach(function (dropdown) {
-        const dropdownBtn = dropdown.querySelector('.dropbtn');
-        const dropdownContent = dropdown.querySelector('.dropdown-content');
-
-        dropdownBtn.addEventListener('mouseenter', function () {
-            dropdownContent.classList.remove('hidden');
-        });
-
-        dropdown.addEventListener('mouseleave', function () {
-            dropdownContent.classList.add('hidden');
-        });
-    });
-});
-// ------------ DROPDOWN BUTTON ------------
 
 // PROFILE IMAGE CLICKING ON - SETTING PAGE
 if (window.location.pathname == '/user/profile') {
@@ -71,11 +53,13 @@ if (true) {
 // ACTIVE LINK - NAVBAR
 
 const nav_links = document.querySelectorAll('#navbar a');
-nav_links.forEach((e) => {
+nav_links.forEach((link) => {
     const pathname = window.location.pathname;
 
-    if (e.getAttribute('href') == pathname)
-        e.classList.add('bg-gray-300');
+    if (link.getAttribute('href') == pathname)
+        link.classList.add('bg-violet-400', 'text-white');
+    else
+        link.classList.remove('bg-violet-400', 'text-white');
 })
 
 // ACTIVE LINK - NAVBAR

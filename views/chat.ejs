@@ -1,7 +1,6 @@
-<%- include('./partials/header') %>
-    <%- include('./partials/navbar') %>
+<%- include('./partials/header') %>    
 
-        <section class="h-[--container-h1]  w-full flex p-0 overflow-y-hidden">
+        <section class="h-[--container-h1] h-screen  w-full flex p-0 overflow-y-hidden">
 
             <nav class="w-[5%] h-full bg-gray-900 flex flex-col justify-between text-[1.5vmax] text-white">
 
@@ -51,7 +50,7 @@
                         </div>
                         <i class="ri-settings-2-line z-10"></i>
                     </a>
-                    <a href="/user/home"
+                    <a href="/user/homeFeeds"
                         class="relative w-full h-[4vmax] flex justify-center items-center cursor-pointer group bg-red-800">
                         <div id="cir-exit"
                             class="absolute bg-red-600 h-[4vmax] w-0 left-0 border-l-[0.2vmax] border-red-600 transition-all duration-300 ease-in-out group-hover:w-full group-hover:border-none">
@@ -377,6 +376,3 @@
             setupMessageSubmission();
 
         </script>
-
-
-        <%- include('./partials/footer') %>

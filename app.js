@@ -31,7 +31,6 @@ const UserCollection = require('./models/user.schema');
 const session = require('express-session');
 const passport = require('passport');
 
-
 app.use(
   session({
     secret: process.env.SESSION_SECRET,

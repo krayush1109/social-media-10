@@ -3,37 +3,93 @@
   <!-- <h1 class="text-4xl text-center my-10" >Welcome to <span class="text-[--primary] font-semibold "> <%= title %></span></h1> -->
 
 
-<main class="py-10 ">
-  <section class="my-10 mt-0">
-    <h2 class="text-3xl text-center text-[--primary] font-bold mb-6">Our Mission</h2>
-    <p class="text-lg leading-relaxed">
-      At <%= title %>, our mission is to connect people from all around the world and foster meaningful interactions. We
-        believe in the power of social media to bring communities together, share ideas, and create lasting memories.
-        Our platform is designed to be user-friendly, secure, and inclusive, providing a space where everyone can
-        express themselves freely and connect with others.
-    </p>
-  </section>
-
-  <section class="my-10">
-    <h2 class="text-3xl text-center text-[--primary] font-bold mb-6">Our Story</h2>
-    <p class="text-lg leading-relaxed">
-      Founded in 2024, <%= title %> started as a small project with a big vision: to create a social media platform that
-        prioritizes user experience and community engagement. Over the years, we have grown into a vibrant community of
-        users who share a passion for staying connected and making a positive impact online. Our team is dedicated to
-        continuously improving the platform and introducing new features that enhance the way people interact with each
-        other.
-    </p>
-  </section>
-
-  <section class="my-10">
-    <h2 class="text-3xl text-center text-[--primary] font-bold mb-6">Contact Us</h2>
-    <p class="text-lg leading-relaxed text-center">
-      Have questions or feedback? We'd love to hear from you! Reach out to us at <a
-        href="mailto:contact@<%= title.toLowerCase() %>.com" class="text-[--primary] font-semibold">contact@<%=
-          title.toLowerCase() %>.com</a> or follow us on our social media channels.
-    </p>
-  </section>
-</main>
+    <!-- Hero Section -->
+    <section
+      class="relative bg-cover bg-center h-[50vh] flex items-center justify-center text-center text-white bg-gray-800"
+      style="background-image: url('https://cdnwebsite.databox.com/wp-content/uploads/2020/12/01062702/about-us-page-examples.png'); background-position: 50% 40%;">
+      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      <div class="relative z-10 p-8 md:p-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">About Us</h1>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto">Learn more about our journey, mission, and the team that drives our
+          success.</p>
+      </div>
+    </section>
+    
+    <!-- Mission Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-6">Our Mission</h2>
+        <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+          At Sociable, our mission is to connect people through innovative social media strategies that foster engagement,
+          build communities, and drive growth. We believe in harnessing the power of social media to create meaningful
+          connections and opportunities for everyone.
+        </p>
+        <img src="https://landmarkrealities.com/wp-content/uploads/2022/07/Mission.jpg" alt="Mission Image" class="mx-auto rounded-lg shadow-lg">
+      </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Meet the Team</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Team Member 1 -->
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member"
+              class="w-24 h-24 mx-auto rounded-full mb-4">
+            <h3 class="text-xl font-semibold mb-2">John Doe</h3>
+            <p class="text-gray-600">CEO & Founder</p>
+            <p class="mt-4">John leads our team with a vision for innovative solutions and strategic growth. His passion for
+              social media drives our mission forward.</p>
+          </div>
+          <!-- Team Member 2 -->
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Team Member"
+              class="w-24 h-24 mx-auto rounded-full mb-4">
+            <h3 class="text-xl font-semibold mb-2">Jane Smith</h3>
+            <p class="text-gray-600">Marketing Director</p>
+            <p class="mt-4">Jane crafts our marketing strategies with creativity and expertise, ensuring our message reaches
+              and resonates with our audience.</p>
+          </div>
+          <!-- Team Member 3 -->
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Team Member"
+              class="w-24 h-24 mx-auto rounded-full mb-4">
+            <h3 class="text-xl font-semibold mb-2">Sam Wilson</h3>
+            <p class="text-gray-600">Lead Developer</p>
+            <p class="mt-4">Sam is the technical brain behind our platform, developing innovative features and ensuring
+              everything runs smoothly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Values Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-6">Our Values</h2>
+        <div class="flex flex-wrap justify-center gap-8">
+          <!-- Value 1 -->
+          <div class="bg-gray-200 p-6 rounded-lg shadow-lg w-full md:w-1/3">
+            <h3 class="text-2xl font-semibold mb-4">Innovation</h3>
+            <p>We embrace creativity and continuously seek new ways to improve and evolve our services to stay ahead in the
+              ever-changing world of social media.</p>
+          </div>
+          <!-- Value 2 -->
+          <div class="bg-gray-200 p-6 rounded-lg shadow-lg w-full md:w-1/3">
+            <h3 class="text-2xl font-semibold mb-4">Integrity</h3>
+            <p>We uphold the highest standards of honesty and transparency in our interactions with clients, partners, and
+              within our team.</p>
+          </div>
+          <!-- Value 3 -->
+          <div class="bg-gray-200 p-6 rounded-lg shadow-lg w-full md:w-1/3">
+            <h3 class="text-2xl font-semibold mb-4">Customer-Centricity</h3>
+            <p>Our customers are at the heart of everything we do. We strive to understand their needs and deliver solutions
+              that exceed their expectations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
     <%- include('./partials/footer') %>
