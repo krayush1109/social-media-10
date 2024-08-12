@@ -2,8 +2,6 @@
 @import './homePage.css';
 @import './scrollbar.css';
 
-
-
 body > *{
   padding: 0 17rem;
 } 
@@ -35,5 +33,6 @@ body > *{
   --container-h1: calc(100vh - 5rem);
   --container-h2: calc(100vh - 12rem);
   --container-h-profile: calc(100vh - 5.5rem);
+  --nav-w : calc(100% - 34rem)
 }
 

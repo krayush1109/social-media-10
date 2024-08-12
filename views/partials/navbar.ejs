@@ -1,6 +1,11 @@
 <nav id="navbar"
     class="flex justify-between items-center h-[4rem] bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold shadow-lg">
-    <div class="flex gap-4">
+    <div class="absolute w-[--nav-w] ">
+        <img class="bg-white mx-auto px-3 py-1 rounded-lg"
+            src="https://ik.imagekit.io/krayush/Sociable/assets/sociable-logo-colorful.svg?updatedAt=1722095176981"
+            alt="" srcset="">
+    </div>
+    <div class="flex gap-2">
         <% if(user) { %>
             <a href="/user/homeFeeds"
                 class="transition-transform transform hover:scale-105 px-6 py-2 rounded-full flex items-center space-x-2 hover:bg-purple-600 hover:text-white">
@@ -12,7 +17,7 @@
             </a>
             <% } else { %>
                 <a href="/"
-                    class="transition-transform transform hover:scale-105 px-6 py-2 rounded-full flex items-center space-x-2 hover:bg-purple-600 hover:text-white">
+                    class="transition-transform transform hover:scale-105 px-6 py-2 rounded-full flex items-center space-x-2 hover:bg-purple-600 hover:text-white ">
                     <i class="ri-home-4-line text-xl"></i> <span>Home</span>
                 </a>
                 <% } %>
@@ -25,7 +30,8 @@
                         <span>Contact</span>
                     </a>
     </div>
-    <div class="flex items-center gap-4 ">
+
+    <div class="flex items-center gap-2 ">
         <% if(user) { %>
             <div class="relative dropdown  ">
                 <div class="flex items-center cursor-pointer space-x-2">
@@ -34,7 +40,7 @@
                     <i class="ri-arrow-down-s-line text-lg"></i>
                 </div>
                 <div
-                    class="absolute hidden right-0 min-w-48 bg-white text-gray-800 rounded shadow-lg  dropdown-content ">
+                    class="absolute hidden right-0 min-w-48 bg-slate-100 text-gray-800 rounded shadow-lg  dropdown-content ">
                     <a href="" class="bg-[#7961f2] block w-full h-3 "></a>
                     <a href="/user/profile" class="block px-4 py-2 hover:bg-violet-300 ">My Profile</a>
                     <a href="/user/setting" class="block px-4 py-2 hover:bg-violet-300">Settings</a>
@@ -42,12 +48,16 @@
                 </div>
             </div>
             <% } else { %>
+                <a href="#"
+                    class="transition-transform transform hover:scale-105 px-6 py-2 rounded-full hover:bg-whitehover:text-purple-500 ">
+
+                </a>
                 <a href="/login"
-                    class="transition-transform transform hover:scale-105 px-6 py-2 rounded-full bg-white text-purple-500 hover:bg-gray-100">
+                    class="transition-transform transform hover:scale-105 px-6 py-2 rounded-full hover:bg-whitehover:text-purple-500 ">
                     Login
                 </a>
                 <a href="/register"
-                    class="transition-transform transform hover:scale-105 px-6 py-2 rounded-full bg-white text-purple-500 hover:bg-gray-100">
+                    class="transition-transform transform hover:scale-105 px-6 py-2 rounded-full hover:bg-whitehover:text-purple-500 ">
                     Register
                 </a>
                 <% } %>
@@ -60,3 +70,22 @@
         display: block;
     }
 </style>
+
+<script>
+    // ACTIVE LINK - NAVBAR
+
+    const nav_links = document.querySelectorAll('#navbar a');
+    nav_links.forEach((link) => {
+        const pathname = window.location.pathname;
+
+        if (link.getAttribute('href') == pathname)
+            link.classList.add('text-violet-600', 'bg-white', 'shadow-md');
+        // link.classList.add('bg-violet-400', 'text-white');
+        else
+            link.classList.remove('text-violet-600', 'bg-white', 'shadow-md');
+
+    })
+
+    // ACTIVE LINK - NAVBAR
+
+</script>

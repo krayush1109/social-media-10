@@ -134,7 +134,7 @@ exports.handleAvatarUpload = async (req, res, next) => {
             file: req.files.avatar.data,
             // fileName: Date.now() + path.extname(req.files.avatar.name),
             fileName: user.username,
-            folder: "/avatar",
+            folder: "/Sociable/avatar",
         })
 
         // console.log("req.user : ", req.user);
@@ -170,6 +170,7 @@ exports.deleteUserAndAvatar = async (req, res, next) => {
 
 exports.renderUserProfile = async (req, res, next) => {
     await req.user.populate("posts");
+    console.log(req.user.avatar.url);
     // res.json(req.user);
     res.render('profile', { title: "User's Profile Page", user: req.user });
 }

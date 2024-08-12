@@ -41,7 +41,7 @@ exports.sendPasswordResetMail = (req, res, user) => {
         await user.save();
 
         console.log("Mail Sent & OTP Saved to DB")
-        return res.redirect(`/verify-otp/${user._id}`);
+        return res.redirect(`/user/verify-otp/${user._id}`);
       
     });
 };

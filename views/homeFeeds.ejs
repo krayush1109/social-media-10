@@ -82,6 +82,17 @@
             </div>
 
 
+              <!-- Add Comment Form -->
+              <div class="comment-form w-full ">
+                <h3 class="text-md font-medium mb-2">Add a Comment</h3>
+                <textarea id="comment-text" rows="1" class=" w-3/4 p-2 border border-gray-300 rounded-md"
+                  placeholder="Write your comment here..."></textarea>
+                <button onclick="addComment()" class=" bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Add
+                  Comment</button>
+              </div>
+
+
+
           </div>
 
           <% }) %>
@@ -110,6 +121,4 @@
 
         })
         // THREE DOTS OPTION OF MY POSTS -> edit post & delete post
-      </script>
-
-      <%- include('./partials/footer') %>
+      </script>      
