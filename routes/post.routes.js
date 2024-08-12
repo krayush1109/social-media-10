@@ -1,7 +1,5 @@
 var express = require('express');
-const imagekit = require('../utils/imagekit');
 const { isLoggedIn } = require('../middleware/auth');
-const PostCollection = require('../models/post.schema');
 const { createNewPost, likeOrUnlikePost, deleteUserPost } = require('../controllers/post.controller');
 var router = express.Router();
 

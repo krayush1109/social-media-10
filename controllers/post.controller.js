@@ -1,3 +1,6 @@
+const PostCollection = require("../models/post.schema");
+const imagekit = require('../utils/imagekit');
+
 exports.createNewPost = async (req, res, next) => {
     try {
         const newPost = new PostCollection(req.body);
@@ -26,14 +29,16 @@ exports.createNewPost = async (req, res, next) => {
 }
 
 exports.likeOrUnlikePost = async (req, res, next) => {
-
     try {
+        const redirectToFeed = req.query.redirectToFeed;
+        // console.log(req.query.redirectToFeed)
+
         const post = await PostCollection.findById(req.params.pid);
         if (!post) {
             return res.status(404).json({ message: 'Post not found' });
         }
 
-        console.log(post);
+        // console.log(post);
 
         // Check if the user has already liked the post
         if (post.likes.includes(req.user._id)) {
@@ -46,13 +51,13 @@ exports.likeOrUnlikePost = async (req, res, next) => {
         }
 
         await post.save();
-        console.log(post);
+        // console.log(post);
 
         // res.send(result + req.user.posts);
         // res.status(200).send("Working Fine");
 
         console.log(req.query.redirect);
-        res.redirect('/user/profile');
+        res.redirect(redirectToFeed || '/user/profile');
     } catch (error) {
         console.log(error)
         // res.render(error);

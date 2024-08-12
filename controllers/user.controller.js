@@ -27,9 +27,15 @@ exports.handleRegistration = async (req, res, next) => {
 }
 
 exports.renderHomeFeed = async (req, res, next) => {
+    const redirectMe = req.originalUrl;
+    console.log(req.originalUrl);    
     const posts = await PostCollection.find({ user: { $ne: req.user._id } }).populate("user");
-
-    res.render("homeFeeds", { title: "Home | Socialmedia", user: req.user, posts });
+    try {
+        res.render("homeFeeds", { title: "Home | Socialmedia", user: req.user, posts, redirectMe });        
+    } catch (error) {
+        console.error("Error: ", error);
+        res.render(error)
+    }
 }
 
 exports.logoutUser = (req, res, next) => {

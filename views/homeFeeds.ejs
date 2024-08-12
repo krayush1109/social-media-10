@@ -54,7 +54,7 @@
             <div class="card-btns flex gap-2 justify-between">
               <div>
                 <% if(!item.likes.includes(user._id)) { %>
-                  <a href="/post/like/<%= item._id %>"
+                  <a href="/post/like/<%= item._id %>?redirectToFeed=<%= redirectMe %>"
                     class="doLikes flex items-start gap-1 w-28 h-fit hover:bg-gray-200 rounded-lg px-3 py-2 cursor-pointer">
                     <i class="ri-heart-line text-xl"></i>
                     <p class="text-md font-medium"> Like (<%= item.likes.length %>) </p>
