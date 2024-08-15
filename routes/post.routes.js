@@ -1,5 +1,5 @@
 var express = require('express');
-const { isLoggedIn } = require('../middleware/auth');
+const { isLoggedIn } = require('../middleware/isLoggedIn');
 const { createNewPost, likeOrUnlikePost, deleteUserPost } = require('../controllers/post.controller');
 var router = express.Router();
 

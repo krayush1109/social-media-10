@@ -3,12 +3,8 @@ var router = express.Router();
 
 const UserCollection = require('../models/user.schema');
 // middleware
-const { isLoggedIn } = require('../middleware/auth');
+const { isLoggedIn } = require('../middleware/isLoggedIn');
 
-// ------------ passport routes ------------ 
-const passport = require('passport')
-const LocalStrategy = require('passport-local')
-passport.use(new LocalStrategy(UserCollection.authenticate()))
 // ------------ passport routes ------------ 
 
 // controllers
@@ -16,18 +12,7 @@ const { getChatPage, renderResetPasswordPage, handleAvatarUpload, deleteUserAndA
 
 /* GET users listing. */
 
-router.post('/register', handleRegistration)
-
-router.post('/login',
-  passport.authenticate("local", {
-    successRedirect: "/user/homeFeeds",
-    failureRedirect: "/login",
-  }),
-  (req, res, next) => { });
-
 router.get('/homeFeeds', isLoggedIn, renderHomeFeed)
-
-router.get('/logout', isLoggedIn, logoutUser)
 
 router.post('/send-mail', handleSendMail)
 

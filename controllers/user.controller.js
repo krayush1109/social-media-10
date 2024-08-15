@@ -13,19 +13,6 @@ var instance = new Razorpay({
 
 const { sendPasswordResetMail } = require('../utils/sendPasswordResetMail');
 
-exports.handleRegistration = async (req, res, next) => {
-    try {
-        const { username, email, password } = req.body;
-        const encryptedDetail = password;
-
-        await UserCollection.register({ username, email }, encryptedDetail);
-        res.redirect("/login");
-    } catch (err) {
-        console.error("Error: ", err);
-        res.send("Error: ", err.message);
-    }
-}
-
 exports.renderHomeFeed = async (req, res, next) => {
     const redirectMe = req.originalUrl;
     console.log(req.originalUrl);    
@@ -36,12 +23,6 @@ exports.renderHomeFeed = async (req, res, next) => {
         console.error("Error: ", error);
         res.render(error)
     }
-}
-
-exports.logoutUser = (req, res, next) => {
-    req.logOut(() => {
-        res.redirect('/login')
-    })
 }
 
 exports.handleSendMail = async (req, res, next) => {

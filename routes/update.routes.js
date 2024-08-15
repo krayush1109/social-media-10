@@ -5,7 +5,7 @@ var router = express.Router();
 const UserCollection = require('../models/user.schema');
 
 // middleware
-const { isLoggedIn } = require('../middleware/auth');
+const { isLoggedIn } = require('../middleware/isLoggedIn');
 
 // ------------ passport routes ------------ 
 const passport = require('passport')
@@ -34,7 +34,7 @@ router.post('/username/:id', isLoggedIn, async (req, res, next) => {
     try {
         const { newUsername } = req.body;
         const user = await UserCollection.findById(req.params.id);
-        
+
         user.username = newUsername;
         await user.save();
 
@@ -43,14 +43,14 @@ router.post('/username/:id', isLoggedIn, async (req, res, next) => {
         console.log(error.message);
         res.send(error);
     }
-        
+
 })
 
 router.post('/updatePassword/:id', isLoggedIn, async (req, res, next) => {
     const { currentPassword, newPassword, confirmPassword } = req.body;
 
     try {
-        const user = await UserCollection.findById(req.params.id);            
+        const user = await UserCollection.findById(req.params.id);
 
         user.authenticate(currentPassword, async (err, user, passwordErr) => {
             if (err)
@@ -64,8 +64,8 @@ router.post('/updatePassword/:id', isLoggedIn, async (req, res, next) => {
 
             await user.changePassword(currentPassword, newPassword)
             res.send("password Updated - Successfully!");
-            
-        })        
+
+        })
 
 
     } catch (err) {

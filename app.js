@@ -11,6 +11,17 @@ var userRouter = require('./routes/user.routes');
 var updateRouter = require('./routes/update.routes');
 var postRouter = require('./routes/post.routes');
 
+// 🔷🔷🔷🔷🔷🔷🔷 Authentication Setup 🔷🔷🔷🔷🔷🔷🔷
+const session = require('express-session');
+const flash = require('connect-flash'); // Import connect-flash
+const passport = require('./config/passport-config'); // Passport.js configuration
+const authRouter = require('./routes/auth.route'); // Routes related to authentication
+
+// Establish MongoDB connection and load user schema
+require('./config/db-connection').connectDB();
+require('./models/user.schema');
+// 🔷🔷🔷🔷🔷🔷🔷 Authentication Setup End 🔷🔷🔷🔷🔷🔷🔷
+
 // express-fileupload to be used with imagekit
 var fileUpload = require('express-fileupload')
 
@@ -19,32 +30,6 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-// db connection
-const db = require('./models/db')
-db.connectDB();
-
-// model or schema collection
-const UserCollection = require('./models/user.schema');
-
-// ------------- passport & session config -------------
-const session = require('express-session');
-const passport = require('passport');
-
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true
-  })
-)
-
-app.use(passport.initialize());
-app.use(passport.session());
-passport.serializeUser(UserCollection.serializeUser());
-passport.deserializeUser(UserCollection.deserializeUser());
-
-// ------------- passport & session config -------------
 
 // config: express-fileupload to be used with imagekit
 app.use(fileUpload({
@@ -57,6 +42,26 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// 🔶🔶🔶🔶🔶🔶🔶  Session and Passport Setup 🔶🔶🔶🔶🔶🔶🔶
+// Initialize session middleware for persistent login sessions
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'your-secret-key', // Replace with your secret
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // Set to true if using HTTPS
+}));
+
+// Initialize connect-flash
+app.use(flash());
+
+// Initialize Passport.js and restore authentication state from session
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Use authentication routes
+app.use('/user', authRouter);
+// 🔶🔶🔶🔶🔶🔶🔶 Session and Passport Setup End 🔶🔶🔶🔶🔶🔶🔶
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);

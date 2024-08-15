@@ -5,7 +5,8 @@ const plm = require('passport-local-mongoose')
 const user_schema = mongoose.Schema({
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     username: {
         type: String,
@@ -40,11 +41,11 @@ const user_schema = mongoose.Schema({
 }, {timestamps: true}
 );
 
-user_schema.plugin(plm);
+// user_schema.plugin(plm);
+user_schema.plugin(plm, {usernameField: 'email'});
 
 const UserCollection = mongoose.model("user", user_schema)
 
 console.log("Schema Created");
 
 module.exports = UserCollection;
-
